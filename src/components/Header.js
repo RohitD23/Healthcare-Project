@@ -1,119 +1,163 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+} from "styled-dropdown-component";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
 export default function Header() {
+  const [patientsDropdown, setpatientsDropdown] = useState(true);
+  const [companyDropdown, setcompanyDropdown] = useState(true);
+  const [gyncDropdown, setgyncDropdown] = useState(true);
+  const [uroDropdown, seturoDropdown] = useState(true);
+  const [orthoDropdown, setorthoDropdown] = useState(true);
+
   return (
     <Container>
-      <div className="upper-header">
-        <div className="logo-name">
-          <img src="logo192.png" alt="Pristyn Care" />
-          <h2 className="white-color">Pristyn Care</h2>
-        </div>
+      <UpperHeader>
+        <Logo>
+          <LogoImg src="logo192.png" alt="Pristyn Care" />
+          <LogoName>Pristyn Care</LogoName>
+        </Logo>
         <div>
-          <div className="dropdown spacing">
-            <button className="dropbtn hover-orange white-color">
+          <DropDown>
+            <DropBtn
+              dropdownToggle
+              onClick={() => setpatientsDropdown(!patientsDropdown)}
+              className="upperBtn"
+            >
               For Patients <RiArrowDropDownLine />
-              <div className="dropdown-content">
-                <a href="#">FAQs</a>
-                <a href="#">Videos</a>
-                <a href="#">CoWin</a>
-                <a href="#">Patient Help</a>
-                <a href="#">Our Doctors</a>
-                <a href="#">English Blog</a>
-                <a href="#">Hindi Blog</a>
-                <a href="#">Our Reviews</a>
-                <a href="#">No Cost EMI</a>
-                <a href="#">Create ABHA</a>
-                <a href="#">Period Tracker</a>
-              </div>
-            </button>
-          </div>
-          <div className="dropdown spacing">
-            <button className="dropbtn hover-orange white-color">
+            </DropBtn>
+            <DropdownMenu
+              hidden={patientsDropdown}
+              toggle={() => setpatientsDropdown(!patientsDropdown)}
+            >
+              <DropItem>FAQs</DropItem>
+              <DropItem>Videos</DropItem>
+              <DropItem>CoWin</DropItem>
+              <DropItem>Patient Help</DropItem>
+              <DropItem>Our Doctors</DropItem>
+              <DropItem>English Blog</DropItem>
+              <DropItem>Hindi Blog</DropItem>
+              <DropItem>Our Reviews</DropItem>
+              <DropItem>No Cost EMI</DropItem>
+              <DropItem>Create ABHA</DropItem>
+              <DropItem>Period Tracker</DropItem>
+            </DropdownMenu>
+          </DropDown>
+          <DropDown>
+            <DropBtn
+              dropdownToggle
+              onClick={() => setcompanyDropdown(!companyDropdown)}
+              className="upperBtn"
+            >
               Our Company <RiArrowDropDownLine />
-              <div className="dropdown-content">
-                <a href="#">Partner with us</a>
-                <a href="#">Media Coverage</a>
-                <a href="#">About Us</a>
-                <a href="#">Careers</a>
-              </div>
-            </button>
-          </div>
-          <button className="book-appointment white-color spacing">
-            Book Free Appointment
-          </button>
+            </DropBtn>
+            <DropdownMenu
+              hidden={companyDropdown}
+              toggle={() => setcompanyDropdown(!companyDropdown)}
+            >
+              <DropItem>Partner with us</DropItem>
+              <DropItem>Media Coverage</DropItem>
+              <DropItem>About Us</DropItem>
+              <DropItem>Careers</DropItem>
+            </DropdownMenu>
+          </DropDown>
+          <AppointmentButton>Book Free Appointment</AppointmentButton>
         </div>
-      </div>
-      <div className="lower-header">
-        <div className="dropdown spacing">
-          <button className="dropbtn hover-blue">
+      </UpperHeader>
+      <LowerHeader>
+        <DropDown>
+          <DropBtn
+            dropdownToggle
+            onClick={() => setgyncDropdown(!gyncDropdown)}
+            className="lowerBtn"
+          >
             Gynaecology <RiArrowDropDownLine />
-            <div className="dropdown-content">
-              <div className="disease-section">
-                <span>Conditions</span>
-              </div>
-              <div className="horizontal-line"></div>
-              <a href="#">Ectopic Pregnancy </a>
-              <a href="#">Molar Pregnancy</a>
-              <a href="#">Bartholin Cyst </a>
-              <a href="#">Miscarriage</a>
-              <a href="#">Endometriosis </a>
-              <a href="#">Adenomyosis </a>
-              <a href="#">Vaginal Cyst </a>
-              <a href="#">PCOD/PCOS </a>
-              <a href="#">Ovarian Cyst</a>
-              <div className="disease-section">
-                <span>Treatments</span>
-              </div>
-              <div className="horizontal-line"></div>
-              <a href="#">Hymenoplasty </a>
-              <a href="#">Pregnancy Care </a>
-              <a href="#">Abortion </a>
-              <a href="#">Loose Vagina </a>
-              <a href="#">Uterus Removal</a>
-              <a href="#">Vaginoplasty </a>
-              <a href="#">Labiaplasty</a>
-            </div>
-          </button>
-        </div>
-        <div className="dropdown spacing">
-          <button className="dropbtn hover-blue">
+          </DropBtn>
+          <DropdownMenu
+            hidden={gyncDropdown}
+            toggle={() => setgyncDropdown(!gyncDropdown)}
+          >
+            <DiseaseSection>
+              <DiseaseHeader>Conditions</DiseaseHeader>
+              <HorizontalLine />
+            </DiseaseSection>
+            <DropItem>Ectopic Pregnancy </DropItem>
+            <DropItem>Molar Pregnancy</DropItem>
+            <DropItem>Bartholin Cyst </DropItem>
+            <DropItem>Miscarriage</DropItem>
+            <DropItem>Endometriosis </DropItem>
+            <DropItem>Adenomyosis </DropItem>
+            <DropItem>Vaginal Cyst </DropItem>
+            <DropItem>PCOD/PCOS </DropItem>
+            <DropItem>Ovarian Cyst</DropItem>
+            <DiseaseSection>
+              <DiseaseHeader>Treatments</DiseaseHeader>
+              <HorizontalLine />
+            </DiseaseSection>
+            <DropItem>Hymenoplasty </DropItem>
+            <DropItem>Pregnancy Care </DropItem>
+            <DropItem>Abortion </DropItem>
+            <DropItem>Loose Vagina </DropItem>
+            <DropItem>Uterus Removal</DropItem>
+            <DropItem>Vaginoplasty </DropItem>
+            <DropItem>Labiaplasty</DropItem>
+          </DropdownMenu>
+        </DropDown>
+        <DropDown>
+          <DropBtn
+            dropdownToggle
+            onClick={() => seturoDropdown(!uroDropdown)}
+            className="lowerBtn"
+          >
             Urology <RiArrowDropDownLine />
-            <div className="dropdown-content">
-              <div className="disease-section">
-                <span>Conditions</span>
-              </div>
-              <div className="horizontal-line"></div>
-              <a href="#">Enlarged Prostate</a>
-              <a href="#">Kidney Stones</a>
-              <a href="#">Hydrocele</a>
-              <a href="#">Phimosis</a>
-            </div>
-          </button>
-        </div>
-        <div className="dropdown spacing">
-          <button className="dropbtn hover-blue">
+          </DropBtn>
+          <DropdownMenu
+            hidden={uroDropdown}
+            toggle={() => seturoDropdown(!uroDropdown)}
+          >
+            <DiseaseSection>
+              <DiseaseHeader>Conditions</DiseaseHeader>
+              <HorizontalLine />
+            </DiseaseSection>
+            <DropItem>Enlarged Prostate</DropItem>
+            <DropItem>Kidney Stones</DropItem>
+            <DropItem>Hydrocele</DropItem>
+            <DropItem>Phimosis</DropItem>
+          </DropdownMenu>
+        </DropDown>
+        <DropDown>
+          <DropBtn
+            dropdownToggle
+            onClick={() => setorthoDropdown(!orthoDropdown)}
+            className="lowerBtn"
+          >
             Orthopedics <RiArrowDropDownLine />
-            <div className="dropdown-content">
-              <div className="disease-section">
-                <span>Conditions</span>
-              </div>
-              <div className="horizontal-line"></div>
-              <a href="#">Carpal Tunnel Syndrome</a>
-              <a href="#">ACL Tear</a>
-              <div className="disease-section">
-                <span>Treatments</span>
-              </div>
-              <div className="horizontal-line"></div>
-              <a href="#">Spine Surgery</a>
-              <a href="#">Bankart Surgery</a>
-              <a href="#">Knee Replacment</a>
-              <a href="#">Hip Replacment</a>
-            </div>
-          </button>
-        </div>
-      </div>
+          </DropBtn>
+          <DropdownMenu
+            hidden={orthoDropdown}
+            toggle={() => setorthoDropdown(!orthoDropdown)}
+          >
+            <DiseaseSection>
+              <DiseaseHeader>Conditions</DiseaseHeader>
+              <HorizontalLine />
+            </DiseaseSection>
+            <DropItem>Carpal Tunnel Syndrome</DropItem>
+            <DropItem>ACL Tear</DropItem>
+            <DiseaseSection>
+              <DiseaseHeader>Treatments</DiseaseHeader>
+              <HorizontalLine />
+            </DiseaseSection>
+            <DropItem>Spine Surgery</DropItem>
+            <DropItem>Bankart Surgery</DropItem>
+            <DropItem>Knee Replacment</DropItem>
+            <DropItem>Hip Replacment</DropItem>
+          </DropdownMenu>
+        </DropDown>
+      </LowerHeader>
     </Container>
   );
 }
@@ -121,108 +165,120 @@ export default function Header() {
 const Container = styled.div`
   position: relative;
   z-index: 1;
-  img {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-  h2 {
-    margin-left: 1rem;
-    font-size: 2.4rem;
-  }
-  span {
-    font-size: 1.4rem;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.79;
-    letter-spacing: normal;
-    display: block;
-    text-align: left;
-    color: #ff8300;
-    cursor: text;
-  }
-  .upper-header {
-    background: #00263e;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 6.6rem;
-    padding: 0 6rem;
-  }
-  .lower-header {
-    padding: 0 6rem;
-    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
-  }
-  .logo-name {
-    display: flex;
-    align-items: center;
-  }
-  .disease-section {
-    padding: 0.5rem 1.6rem;
-  }
-  .spacing {
-    margin: 1.5rem;
-  }
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  .dropbtn {
-    background: none;
-    margin: 0;
-    padding: 0;
-    font-size: 1.5rem;
-    border: none;
-    cursor: pointer;
-  }
-  .hover-orange:hover {
-    color: #ff8300;
-  }
-  .hover-blue:hover {
-    color: #006491;
-  }
-  .white-color {
+  .upperBtn {
     color: #fff;
+
+    &:hover {
+      color: #ff8300;
+    }
   }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 1;
-    background-color: #fff;
-    font-size: 1.4rem;
-    min-width: 16rem;
-    font-weight: 400;
-    box-shadow: 0 0.8rem 1.6rem 0 rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 0.5rem;
+  .lowerBtn {
+    &:hover {
+      color: #006491;
+    }
   }
-  .dropdown-content a {
-    color: black;
-    padding: 0.8rem 1.6rem;
-    text-decoration: none;
-    text-align: left;
-    display: block;
-  }
-  .dropdown-content a:hover {
-    color: #006491;
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .book-appointment {
-    background-color: #ff8300;
-    border: 0.1rem solid #fff;
-    padding: 1.4rem 2rem 1.2rem;
-    border-radius: 2.1rem;
-    font-weight: 600;
-    line-height: 1.7rem;
-    letter-spacing: 0;
-    opacity: 1;
-    cursor: pointer;
-  }
-  .horizontal-line {
-    height: 0;
-    border: 0.1rem solid #ddd;
-    margin: 0 0.1rem;
-  }
+`;
+
+const UpperHeader = styled.div`
+  background: #00263e;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 6.6rem;
+  padding: 0 6rem;
+`;
+
+const LowerHeader = styled.div`
+  padding: 0 6rem;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+`;
+
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const LogoImg = styled.img`
+  width: 4.5rem;
+  height: 4.5rem;
+`;
+
+const LogoName = styled.h2`
+  margin-left: 1rem;
+  font-size: 2.4rem;
+  color: #fff;
+`;
+
+const DropDown = styled(Dropdown)`
+  margin: 1.5rem;
+`;
+
+const DropBtn = styled.button`
+  background: none;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.5rem;
+
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+`;
+
+const DropItem = styled(DropdownItem)`
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: left;
+
+  padding: 0.8rem 1.6rem;
+`;
+
+const AppointmentButton = styled.button`
+  background-color: #ff8300;
+  color: #fff;
+
+  border: 0.1rem solid #fff;
+  border-radius: 2.1rem;
+
+  padding: 1.4rem 2rem 1.2rem;
+  margin: 1.5rem;
+  line-height: 1.7rem;
+
+  font-weight: 600;
+  letter-spacing: 0;
+
+  opacity: 1;
+  cursor: pointer;
+`;
+
+const DiseaseSection = styled.div`
+  padding: 0.5rem 1.6rem;
+`;
+
+const DiseaseHeader = styled.span`
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.79;
+  letter-spacing: normal;
+  text-align: left;
+
+  display: block;
+
+  color: #ff8300;
+
+  cursor: text;
+`;
+
+const HorizontalLine = styled.div`
+  height: 0;
+  border: 0.1rem solid #ddd;
+  margin: 0 0.1rem;
 `;

@@ -64,8 +64,7 @@ const Heading = styled.div`
   color: #505257;
   opacity: 1;
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 4.5rem;
+  margin: 4.5rem 0;
 `;
 
 const Facilties = styled.div`

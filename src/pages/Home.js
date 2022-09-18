@@ -5,6 +5,7 @@ import MainSection from "../components/MainSection";
 import DoctorsList from "../components/DoctorsList";
 import FacilitySection from "../components/FacilitySection";
 import Specialities from "../components/Specialities";
+import DataSection from "../components/DataSection";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <DoctorsList />
       <FacilitySection />
       <Specialities />
+      <DataSection />
     </div>
   );
 }

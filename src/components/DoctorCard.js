@@ -114,7 +114,7 @@ const RatingContainer = styled.div`
 const Rating = styled.div`
   margin: 0 1rem;
   font-size: 1.7rem;
-  font-weight: normal;
+  font-weight: 400;
 `;
 
 const DividerLine = styled.div`
@@ -143,7 +143,7 @@ const InfoText = styled.div`
 
 const InfoTextBold = styled.div`
   font-size: 1.7rem;
-  font-weight: bold;
+  font-weight: 800;
 `;
 
 const ButtonGroup = styled.div`
@@ -163,7 +163,7 @@ const ContactClinicButton = styled.button`
   margin: 0 2.5%;
 
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 800;
 
   color: #3d7cc9;
   border: 1px solid #3d7cc9;
@@ -180,7 +180,7 @@ const BookAppointmentButton = styled.button`
   padding: 0 1rem;
 
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 800;
 
   color: white;
   background-color: #ff8300;

@@ -60,7 +60,7 @@ const Container = styled.div``;
 
 const Heading = styled.div`
   font-size: 3.5rem;
-  font-weight: 600;
+  font-weight: 800;
   color: #505257;
   opacity: 1;
   text-align: center;
@@ -94,7 +94,7 @@ const FacilityContent = styled.div`
 
 const FaciltyHeading = styled.div`
   font-size: 2.5rem;
-  font-weight: 550;
+  font-weight: 700;
   color: #505257;
   opacity: 1;
 `;

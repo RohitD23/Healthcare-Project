@@ -59,7 +59,7 @@ const Heading = styled.h1`
   color: #3d7cc9;
   font-size: 5.2rem;
   line-height: 5.6rem;
-  font-weight: 700;
+  font-weight: 800;
   max-width: 60rem;
   padding: 5.2rem 0 1.6rem 0;
 `;
@@ -73,7 +73,7 @@ const StatsContainer = styled.div`
 const StatsNumber = styled.div`
   color: #505257;
   font-size: 3.5rem;
-  font-weight: 700;
+  font-weight: 800;
   text-align: left;
 `;
 
@@ -144,7 +144,7 @@ const AppointmentButton = styled.button`
 const BannerHeading = styled.div`
   color: #505257;
   font-size: 2.2rem;
-  font-weight: 900;
+  font-weight: 800;
   padding-bottom: 2.5rem;
   line-height: 3rem;
   max-width: 55rem;

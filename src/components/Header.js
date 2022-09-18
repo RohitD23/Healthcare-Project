@@ -250,7 +250,7 @@ const AppointmentButton = styled.button`
   margin: 1.5rem;
   line-height: 1.7rem;
 
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0;
 
   opacity: 1;
@@ -263,7 +263,7 @@ const DiseaseSection = styled.div`
 
 const DiseaseHeader = styled.span`
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.79;

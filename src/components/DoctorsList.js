@@ -46,7 +46,7 @@ const Container = styled.div`
 const Header = styled.div`
   font-size: 3.5rem;
   color: white;
-  font-weight: 600;
+  font-weight: 800;
 `;
 
 const DoctorsListContainer = styled.div`

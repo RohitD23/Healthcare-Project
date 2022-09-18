@@ -48,7 +48,7 @@ const Container = styled.div`
 
 const Heading = styled.div`
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 800;
   color: #fff;
   opacity: 1;
   text-align: center;
@@ -80,7 +80,7 @@ const SpeacialityHeading = styled.div`
   justify-content: space-between;
 
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
   color: #505257;
 
@@ -92,7 +92,6 @@ const SpeacialityDetails = styled.div`
   letter-spacing: 0;
   color: #727983;
   opacity: 1;
-
   max-width: 25rem;
   padding: 0 1.5rem;
   margin-bottom: 1rem;

@@ -4,12 +4,12 @@ import styled from "styled-components";
 export default function FacilitySection() {
   return (
     <Container>
-      <Heading>Why Pristyn Care?</Heading>
+      <Heading>Why Mamta Hospital?</Heading>
       <Facilties>
         <Facility>
           <Img src="protection.png" alt="covid icon" />
           <FacilityContent>
-            <FaciltyHeading>Pristyn Care is COVID-19 safe</FaciltyHeading>
+            <FaciltyHeading>Mamta Hospital is COVID-19 safe</FaciltyHeading>
             <FacilityDetails>
               Your safety is taken care of by thermal screening, social
               distancing, sanitized clinics and hospital rooms, sterilized
@@ -59,7 +59,7 @@ export default function FacilitySection() {
 const Container = styled.div``;
 
 const Heading = styled.div`
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 800;
   color: #505257;
   opacity: 1;
@@ -93,7 +93,7 @@ const FacilityContent = styled.div`
 `;
 
 const FaciltyHeading = styled.div`
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: #505257;
   opacity: 1;

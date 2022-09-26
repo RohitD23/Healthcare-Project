@@ -7,9 +7,10 @@ import {
 } from "styled-dropdown-component";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
+import AppointmentPopUp from "../AppointmentPopUp";
+
 export default function Header() {
-  const [patientsDropdown, setpatientsDropdown] = useState(true);
-  const [companyDropdown, setcompanyDropdown] = useState(true);
+  const [trigger, setTrigger] = useState(false);
   const [gyncDropdown, setgyncDropdown] = useState(true);
   const [uroDropdown, seturoDropdown] = useState(true);
   const [orthoDropdown, setorthoDropdown] = useState(true);
@@ -17,63 +18,17 @@ export default function Header() {
   return (
     <Container>
       <UpperHeader>
-        <Logo>
-          <LogoImg src="logo192.png" alt="Pristyn Care" />
-          <LogoName>Pristyn Care</LogoName>
-        </Logo>
-        <div>
-          <DropDown>
-            <DropBtn
-              dropdownToggle
-              onClick={() => setpatientsDropdown(!patientsDropdown)}
-              className="upperBtn"
-            >
-              For Patients <RiArrowDropDownLine />
-            </DropBtn>
-            <DropdownMenu
-              hidden={patientsDropdown}
-              toggle={() => setpatientsDropdown(!patientsDropdown)}
-            >
-              <DropItem>FAQs</DropItem>
-              <DropItem>Videos</DropItem>
-              <DropItem>CoWin</DropItem>
-              <DropItem>Patient Help</DropItem>
-              <DropItem>Our Doctors</DropItem>
-              <DropItem>English Blog</DropItem>
-              <DropItem>Hindi Blog</DropItem>
-              <DropItem>Our Reviews</DropItem>
-              <DropItem>No Cost EMI</DropItem>
-              <DropItem>Create ABHA</DropItem>
-              <DropItem>Period Tracker</DropItem>
-            </DropdownMenu>
-          </DropDown>
-          <DropDown>
-            <DropBtn
-              dropdownToggle
-              onClick={() => setcompanyDropdown(!companyDropdown)}
-              className="upperBtn"
-            >
-              Our Company <RiArrowDropDownLine />
-            </DropBtn>
-            <DropdownMenu
-              hidden={companyDropdown}
-              toggle={() => setcompanyDropdown(!companyDropdown)}
-            >
-              <DropItem>Partner with us</DropItem>
-              <DropItem>Media Coverage</DropItem>
-              <DropItem>About Us</DropItem>
-              <DropItem>Careers</DropItem>
-            </DropdownMenu>
-          </DropDown>
-          <AppointmentButton>Book Free Appointment</AppointmentButton>
-        </div>
+        <LogoName>Mamta Hospital</LogoName>
+        <AppointmentButton onClick={() => setTrigger(true)}>
+          Book Free Appointment
+        </AppointmentButton>
+        <AppointmentPopUp trigger={trigger} setTrigger={setTrigger} />
       </UpperHeader>
       <LowerHeader>
         <DropDown>
           <DropBtn
             dropdownToggle
             onClick={() => setgyncDropdown(!gyncDropdown)}
-            className="lowerBtn"
           >
             Gynaecology <RiArrowDropDownLine />
           </DropBtn>
@@ -108,11 +63,7 @@ export default function Header() {
           </DropdownMenu>
         </DropDown>
         <DropDown>
-          <DropBtn
-            dropdownToggle
-            onClick={() => seturoDropdown(!uroDropdown)}
-            className="lowerBtn"
-          >
+          <DropBtn dropdownToggle onClick={() => seturoDropdown(!uroDropdown)}>
             Urology <RiArrowDropDownLine />
           </DropBtn>
           <DropdownMenu
@@ -133,7 +84,6 @@ export default function Header() {
           <DropBtn
             dropdownToggle
             onClick={() => setorthoDropdown(!orthoDropdown)}
-            className="lowerBtn"
           >
             Orthopedics <RiArrowDropDownLine />
           </DropBtn>
@@ -163,27 +113,16 @@ export default function Header() {
 }
 
 const Container = styled.div`
-  position: relative;
-  z-index: 1;
-  .upperBtn {
-    color: #fff;
-
-    &:hover {
-      color: #ff8300;
-    }
-  }
-  .lowerBtn {
-    &:hover {
-      color: #006491;
-    }
-  }
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `;
 
 const UpperHeader = styled.div`
-  background: #00263e;
+  background-color: #178066;
 
-  display: flex;
   justify-content: space-between;
+  display: flex;
   align-items: center;
 
   height: 6.6rem;
@@ -192,55 +131,21 @@ const UpperHeader = styled.div`
 
 const LowerHeader = styled.div`
   padding: 0 6rem;
-  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2rem 1rem -1.5rem rgba(0, 0, 0, 0.2);
+  background-color: white;
 `;
 
-const Logo = styled.div`
+const LogoName = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const LogoImg = styled.img`
-  width: 4.5rem;
-  height: 4.5rem;
-`;
-
-const LogoName = styled.h2`
   margin-left: 1rem;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
+  font-weight: 800;
   color: #fff;
 `;
 
-const DropDown = styled(Dropdown)`
-  margin: 1.5rem;
-`;
-
-const DropBtn = styled.button`
-  background: none;
-
-  margin: 0;
-  padding: 0;
-
-  font-size: 1.5rem;
-
-  border: none;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-`;
-
-const DropItem = styled(DropdownItem)`
-  font-size: 1.4rem;
-  font-weight: 400;
-  text-decoration: none;
-  text-align: left;
-
-  padding: 0.8rem 1.6rem;
-`;
-
 const AppointmentButton = styled.button`
-  background-color: #ff8300;
+  background-color: #178066;
   color: #fff;
 
   border: 0.1rem solid #fff;
@@ -255,6 +160,46 @@ const AppointmentButton = styled.button`
 
   opacity: 1;
   cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    color: #178066;
+    border-color: #178066;
+  }
+`;
+
+const DropDown = styled(Dropdown)`
+  margin: 1.5rem;
+`;
+
+const DropBtn = styled.button`
+  background: none;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.4rem;
+
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  color: #505257;
+
+  &:hover {
+    color: #178066;
+  }
+`;
+
+const DropItem = styled(DropdownItem)`
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: left;
+  color: #505257;
+  padding: 0.8rem 1.6rem;
 `;
 
 const DiseaseSection = styled.div`
@@ -272,7 +217,7 @@ const DiseaseHeader = styled.span`
 
   display: block;
 
-  color: #ff8300;
+  color: #178066;
 
   cursor: text;
 `;

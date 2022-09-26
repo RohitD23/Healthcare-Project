@@ -1,21 +1,17 @@
 import React from "react";
 
-import Header from "../components/Header";
-import MainSection from "../components/MainSection";
-import DoctorsList from "../components/DoctorsList";
-import FacilitySection from "../components/FacilitySection";
-import Specialities from "../components/Specialities";
-import DataSection from "../components/DataSection";
+import Header from "../components/sections/Header";
+import MainSection from "../components/sections/MainSection";
+import Services from "../components/sections/Services";
+import FacilitySection from "../components/sections/FacilitySection";
 
 export default function Home() {
   return (
     <div>
       <Header />
       <MainSection />
-      <DoctorsList />
+      <Services />
       <FacilitySection />
-      <Specialities />
-      <DataSection />
     </div>
   );
 }

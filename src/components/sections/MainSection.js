@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FiPhoneCall } from "react-icons/fi";
 
-import AppointmentPopUp from "../AppointmentPopUp";
+import PopUp from "../PopUp";
+import AppointmentForm from "../AppointmentForm";
 
 export default function MainSection() {
   const [trigger, setTrigger] = useState(false);
@@ -20,7 +21,9 @@ export default function MainSection() {
           <AppointmentButton onClick={() => setTrigger(true)}>
             BOOK FREE CONSULTATION
           </AppointmentButton>
-          <AppointmentPopUp trigger={trigger} setTrigger={setTrigger} />
+          <PopUp trigger={trigger} setTrigger={setTrigger}>
+            <AppointmentForm width={100} />
+          </PopUp>
         </BtnsContainer>
         <BannerHeading>
           Book Free Appointments With Our Expert Doctors
@@ -82,11 +85,18 @@ const CallButton = styled.button`
 
   background-color: #178066;
 
+  transition: 0.5s;
+
   a {
     color: #fff;
     font-weight: 800;
     font-size: 1.4rem;
     text-decoration: none;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0.25rem 0.25rem rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -107,6 +117,13 @@ const AppointmentButton = styled.button`
 
   color: #178066;
   background-color: #fcfaf7;
+
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0.25rem 0.25rem rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const BannerHeading = styled.div`

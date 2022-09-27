@@ -34,7 +34,7 @@ const InputContainer = styled.div`
   }
 
   input:focus {
-    box-shadow: 0 0 0 0.2rem #1361ed;
+    box-shadow: 0 0 0 0.2rem #178066;
   }
 
   label {
@@ -51,7 +51,7 @@ const InputContainer = styled.div`
 
   &:focus-within label {
     transform: translate(0, 1.2rem) scale(0.8);
-    color: #1361ed;
+    color: #178066;
   }
 
   .filled {

@@ -7,7 +7,8 @@ import {
 } from "styled-dropdown-component";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-import AppointmentPopUp from "../AppointmentPopUp";
+import PopUp from "../PopUp";
+import AppointmentForm from "./../AppointmentForm";
 
 export default function Header() {
   const [trigger, setTrigger] = useState(false);
@@ -22,7 +23,9 @@ export default function Header() {
         <AppointmentButton onClick={() => setTrigger(true)}>
           Book Free Appointment
         </AppointmentButton>
-        <AppointmentPopUp trigger={trigger} setTrigger={setTrigger} />
+        <PopUp trigger={trigger} setTrigger={setTrigger}>
+          <AppointmentForm width={100} />
+        </PopUp>
       </UpperHeader>
       <LowerHeader>
         <DropDown>
@@ -160,6 +163,8 @@ const AppointmentButton = styled.button`
 
   opacity: 1;
   cursor: pointer;
+
+  transition: 0.5s;
 
   &:hover {
     background-color: #fff;

@@ -5,6 +5,7 @@ import MainSection from "../components/sections/MainSection";
 import Services from "../components/sections/Services";
 import Contact from "../components/sections/Contact";
 import AboutUs from "../components/sections/AboutUs";
+import MeetDoctors from "../components/sections/MeetDoctors";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <MainSection />
       <Services />
       <AboutUs />
+      <MeetDoctors />
       <Contact />
     </div>
   );

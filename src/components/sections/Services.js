@@ -1,37 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+import { servicesData } from "../../models/ServicesData";
+import ServiceCard from "./../cards/ServiceCard";
+
 export default function Services() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    setServices(
+      servicesData.map((service) => (
+        <ServiceCard name={service.name} imgSrc={service.imgSrc} />
+      ))
+    );
+  }, []);
+
   return (
     <Container>
       <Heading>Services</Heading>
       <HorizontalLine />
-      <ServicesContainer>
-        <Service>
-          <img src="uterus.png" alt="gynaecology" />
-          <p>Gynaecology</p>
-        </Service>
-        <Service>
-          <img src="urology.png" alt="urology" />
-          <p>Urology</p>
-        </Service>
-        <Service>
-          <img src="orthopedics.png" alt="orthopedics" />
-          <p>Orthopedics</p>
-        </Service>
-        <Service>
-          <img src="infertility.png" alt="infertility" />
-          <p>Infertility Care</p>
-        </Service>
-        <Service>
-          <img src="microscope.png" alt="pathology" />
-          <p>Pathology</p>
-        </Service>
-        <Service>
-          <img src="mri.png" alt="radiology" />
-          <p>Radiology</p>
-        </Service>
-      </ServicesContainer>
+      <ServicesContainer>{services}</ServicesContainer>
     </Container>
   );
 }
@@ -62,29 +50,4 @@ const ServicesContainer = styled.div`
   gap: 5rem 5rem;
   justify-content: space-evenly;
   align-items: center;
-`;
-
-const Service = styled.div`
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  height: 20rem;
-  width: 20rem;
-  cursor: pointer;
-  transition: 0.5s;
-
-  &:hover {
-    transform: scale(1.15);
-    box-shadow: 1rem 1rem rgba(0, 0, 0, 0.2);
-  }
-
-  p {
-    font-size: 1.4rem;
-    line-height: 2;
-    font-weight: 800;
-    color: #505257;
-  }
 `;

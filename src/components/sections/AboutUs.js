@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function AboutUs() {
   return (
     <Container>
-      <Img src="ownerImage.jpg" alt="Owner" />
+      <Img src="images/ownerImage.jpg" alt="Owner" />
       <Info>
         <h1>About Us</h1>
         <p>

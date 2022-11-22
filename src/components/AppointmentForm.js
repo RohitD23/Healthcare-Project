@@ -14,7 +14,8 @@ export default function AppointmentForm(props) {
       onSubmit={(event) => handleSubmit(event)}
       width={props.width}
     >
-      <TextInput label="Patient Name" />
+      <TextInput label="First Name" />
+      <TextInput label="Last Name" />
       <TextInput label="Enter 10 Digit Number" />
       <TextInput label="Email" />
       <Select>

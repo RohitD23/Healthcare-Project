@@ -9,12 +9,27 @@ export default function Services() {
       <ServicesContainer>
         <Service>
           <img src="uterus.png" alt="gynaecology" />
+          <p>Gynaecology</p>
         </Service>
         <Service>
           <img src="urology.png" alt="urology" />
+          <p>Urology</p>
         </Service>
         <Service>
           <img src="orthopedics.png" alt="orthopedics" />
+          <p>Orthopedics</p>
+        </Service>
+        <Service>
+          <img src="infertility.png" alt="infertility" />
+          <p>Infertility Care</p>
+        </Service>
+        <Service>
+          <img src="microscope.png" alt="pathology" />
+          <p>Pathology</p>
+        </Service>
+        <Service>
+          <img src="mri.png" alt="radiology" />
+          <p>Radiology</p>
         </Service>
       </ServicesContainer>
     </Container>
@@ -25,7 +40,7 @@ const Container = styled.div`
   background-color: #178066;
   display: flex;
   flex-direction: column;
-  padding: 3.5rem 0;
+  padding: 10rem 0;
 `;
 
 const Heading = styled.div`
@@ -33,7 +48,6 @@ const Heading = styled.div`
   font-weight: 800;
   font-size: 3.2rem;
   text-align: center;
-  margin-top: 4.5rem;
 `;
 
 const HorizontalLine = styled.div`
@@ -53,6 +67,7 @@ const ServicesContainer = styled.div`
 const Service = styled.div`
   background-color: #fff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
@@ -64,5 +79,12 @@ const Service = styled.div`
   &:hover {
     transform: scale(1.15);
     box-shadow: 1rem 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 2;
+    font-weight: 800;
+    color: #505257;
   }
 `;

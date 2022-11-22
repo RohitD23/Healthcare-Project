@@ -15,7 +15,7 @@ export default function MainSection() {
         <BtnsContainer>
           <CallButton>
             <a href="tel:+919307530213">
-              <FiPhoneCall /> Call Us : XXXX-XXX-XXX
+              <FiPhoneCall /> Call Us : 02382-243493
             </a>
           </CallButton>
           <AppointmentButton onClick={() => setTrigger(true)}>

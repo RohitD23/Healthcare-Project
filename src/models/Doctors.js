@@ -1,29 +1,50 @@
 export const Doctors = [
   {
-    name: "Dr. Shruti Ganesh Despande",
-    education: "MBBS, MS - General Surgery",
-    experience: 20,
-    rating: 5,
-    location: "Sasun Hospital, Pune",
-    fees: 500,
-    availability: "Today",
+    name: "Dr. Maya Kulkarni",
+    img: "doctors/DrMaya.jpg",
   },
   {
-    name: "Dr. Kavita Akelesh Yadav",
-    education: "MBBS, Neurology",
-    experience: 12,
-    rating: 5,
-    location: "Nobel Hospital, Pune",
-    fees: 1250,
-    availability: "Today",
+    name: "Dr. Vishvas Kulkarni",
+    img: "doctors/DrVishvas.png",
   },
   {
-    name: "Dr. Emily Panders",
-    education: "MS - Dentist",
-    experience: 24,
-    rating: 5,
-    location: "Healthcare Clinic, Pune",
-    fees: 800,
-    availability: "Tuesday",
+    name: "Dr. Anuja Kulkarni",
+    img: "doctors/DrAnuja.jpg",
+  },
+  {
+    name: "Dr. Amol Londhe",
+    img: "doctors/DrAmol.jpg",
+  },
+  {
+    name: "Dr. Shreeram Patil",
+    img: "doctors/DrShreeram.jpg",
+  },
+  {
+    name: "Dr. Kalyani Sasturkar",
+    img: "doctors/DrKalyani.jpg",
+  },
+  {
+    name: "Dr. Nitin Sasturkar",
+    img: "doctors/DrNitin.jpg",
+  },
+  {
+    name: "Dr. Rameshwari Allahabade",
+    img: "doctors/DrRameshwari.jpg",
+  },
+  {
+    name: "Dr. Prachi Ruikar",
+    img: "doctors/DrPrachi.jpg",
+  },
+  {
+    name: "Dr. Rajashree Gundwar",
+    img: "doctors/DrRajashree.jpg",
+  },
+  {
+    name: "Dr. Vaishali Tekale",
+    img: "doctors/DrVaishali.jpg",
+  },
+  {
+    name: "Dr. Ram Kulkarni",
+    img: "doctors/DrRam.jpg",
   },
 ];

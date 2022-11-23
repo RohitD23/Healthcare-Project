@@ -10,7 +10,11 @@ export default function Services() {
   useEffect(() => {
     setServices(
       servicesData.map((service) => (
-        <ServiceCard name={service.name} imgSrc={service.imgSrc} />
+        <ServiceCard
+          key={service.name}
+          name={service.name}
+          imgSrc={service.imgSrc}
+        />
       ))
     );
   }, []);

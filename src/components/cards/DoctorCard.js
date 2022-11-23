@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function DoctorCard({ imgSrc, name }) {
+export default function DoctorCard({ name, imgSrc, field }) {
   return (
     <Container>
       <img src={imgSrc} alt={name} />
-      <p>{name}</p>
+      <h1>{name}</h1>
+      <p>{field}</p>
     </Container>
   );
 }
@@ -18,16 +19,21 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   img {
     width: 25rem;
     height: 30rem;
   }
 
-  p {
-    font-size: 1.6rem;
+  h1 {
+    font-size: 1.8rem;
     font-weight: 800;
+    color: #505257;
+  }
+
+  p {
+    font-size: 1.2rem;
     color: #505257;
   }
 `;

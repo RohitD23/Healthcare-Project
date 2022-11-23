@@ -12,14 +12,12 @@ import AppointmentForm from "./../AppointmentForm";
 
 export default function Header() {
   const [trigger, setTrigger] = useState(false);
-  const [gyncDropdown, setgyncDropdown] = useState(true);
-  const [uroDropdown, seturoDropdown] = useState(true);
-  const [orthoDropdown, setorthoDropdown] = useState(true);
+  const [dropdown, setDropdown] = useState(true);
 
   return (
     <Container>
       <UpperHeader>
-        <LogoName>Mamta Hospital</LogoName>
+        <LogoName href="/">Mamta Hospital</LogoName>
         <AppointmentButton onClick={() => setTrigger(true)}>
           Book Free Appointment
         </AppointmentButton>
@@ -29,85 +27,16 @@ export default function Header() {
       </UpperHeader>
       <LowerHeader>
         <DropDown>
-          <DropBtn
-            dropdownToggle
-            onClick={() => setgyncDropdown(!gyncDropdown)}
-          >
-            Gynaecology <RiArrowDropDownLine />
+          <DropBtn dropdownToggle onMouseOver={() => setDropdown(!dropdown)}>
+            Departments <RiArrowDropDownLine />
           </DropBtn>
-          <DropdownMenu
-            hidden={gyncDropdown}
-            toggle={() => setgyncDropdown(!gyncDropdown)}
-          >
-            <DiseaseSection>
-              <DiseaseHeader>Conditions</DiseaseHeader>
-              <HorizontalLine />
-            </DiseaseSection>
-            <DropItem>Ectopic Pregnancy </DropItem>
-            <DropItem>Molar Pregnancy</DropItem>
-            <DropItem>Bartholin Cyst </DropItem>
-            <DropItem>Miscarriage</DropItem>
-            <DropItem>Endometriosis </DropItem>
-            <DropItem>Adenomyosis </DropItem>
-            <DropItem>Vaginal Cyst </DropItem>
-            <DropItem>PCOD/PCOS </DropItem>
-            <DropItem>Ovarian Cyst</DropItem>
-            <DiseaseSection>
-              <DiseaseHeader>Treatments</DiseaseHeader>
-              <HorizontalLine />
-            </DiseaseSection>
-            <DropItem>Hymenoplasty </DropItem>
-            <DropItem>Pregnancy Care </DropItem>
-            <DropItem>Abortion </DropItem>
-            <DropItem>Loose Vagina </DropItem>
-            <DropItem>Uterus Removal</DropItem>
-            <DropItem>Vaginoplasty </DropItem>
-            <DropItem>Labiaplasty</DropItem>
-          </DropdownMenu>
-        </DropDown>
-        <DropDown>
-          <DropBtn dropdownToggle onClick={() => seturoDropdown(!uroDropdown)}>
-            Urology <RiArrowDropDownLine />
-          </DropBtn>
-          <DropdownMenu
-            hidden={uroDropdown}
-            toggle={() => seturoDropdown(!uroDropdown)}
-          >
-            <DiseaseSection>
-              <DiseaseHeader>Conditions</DiseaseHeader>
-              <HorizontalLine />
-            </DiseaseSection>
-            <DropItem>Enlarged Prostate</DropItem>
-            <DropItem>Kidney Stones</DropItem>
-            <DropItem>Hydrocele</DropItem>
-            <DropItem>Phimosis</DropItem>
-          </DropdownMenu>
-        </DropDown>
-        <DropDown>
-          <DropBtn
-            dropdownToggle
-            onClick={() => setorthoDropdown(!orthoDropdown)}
-          >
-            Orthopedics <RiArrowDropDownLine />
-          </DropBtn>
-          <DropdownMenu
-            hidden={orthoDropdown}
-            toggle={() => setorthoDropdown(!orthoDropdown)}
-          >
-            <DiseaseSection>
-              <DiseaseHeader>Conditions</DiseaseHeader>
-              <HorizontalLine />
-            </DiseaseSection>
-            <DropItem>Carpal Tunnel Syndrome</DropItem>
-            <DropItem>ACL Tear</DropItem>
-            <DiseaseSection>
-              <DiseaseHeader>Treatments</DiseaseHeader>
-              <HorizontalLine />
-            </DiseaseSection>
-            <DropItem>Spine Surgery</DropItem>
-            <DropItem>Bankart Surgery</DropItem>
-            <DropItem>Knee Replacment</DropItem>
-            <DropItem>Hip Replacment</DropItem>
+          <DropdownMenu hidden={dropdown} toggle={() => setDropdown(!dropdown)}>
+            <DropItem>Gynaecology </DropItem>
+            <DropItem>Urology</DropItem>
+            <DropItem>Orthopedics</DropItem>
+            <DropItem>Infertility Care</DropItem>
+            <DropItem>Pathology</DropItem>
+            <DropItem>Radiology</DropItem>
           </DropdownMenu>
         </DropDown>
       </LowerHeader>
@@ -138,12 +67,13 @@ const LowerHeader = styled.div`
   background-color: white;
 `;
 
-const LogoName = styled.div`
+const LogoName = styled.a`
   display: flex;
   align-items: center;
   margin-left: 1rem;
   font-size: 2.8rem;
   font-weight: 800;
+  text-decoration: none;
   color: #fff;
 `;
 
@@ -205,30 +135,4 @@ const DropItem = styled(DropdownItem)`
   text-align: left;
   color: #505257;
   padding: 0.8rem 1.6rem;
-`;
-
-const DiseaseSection = styled.div`
-  padding: 0.5rem 1.6rem;
-`;
-
-const DiseaseHeader = styled.span`
-  font-size: 1.4rem;
-  font-weight: 800;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.79;
-  letter-spacing: normal;
-  text-align: left;
-
-  display: block;
-
-  color: #178066;
-
-  cursor: text;
-`;
-
-const HorizontalLine = styled.div`
-  height: 0;
-  border: 0.1rem solid #ddd;
-  margin: 0 0.1rem;
 `;

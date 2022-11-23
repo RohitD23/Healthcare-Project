@@ -15,7 +15,12 @@ export default function MeetDoctors() {
   useEffect(() => {
     setDoctors(
       Doctors.map((doctor) => (
-        <DoctorCard key={doctor.name} imgSrc={doctor.img} name={doctor.name} />
+        <DoctorCard
+          key={doctor.name}
+          imgSrc={doctor.img}
+          name={doctor.name}
+          field={doctor.field.toString()}
+        />
       ))
     );
   }, []);
@@ -29,17 +34,14 @@ export default function MeetDoctors() {
     <>
       <Heading>Meet Our Specialists</Heading>
       <Container>
-        {pos !== 0 && (
-          <Button onClick={() => slide(-315)}>
-            <LArrow className="arrow" />
-          </Button>
-        )}
+        <Button onClick={() => slide(-315)}>
+          <LArrow className="arrow" />
+        </Button>
+
         <DocContainer ref={ref}>{doctors}</DocContainer>
-        {pos < 3150 && (
-          <Button onClick={() => slide(315)}>
-            <RArrow className="arrow" />
-          </Button>
-        )}
+        <Button onClick={() => slide(315)}>
+          <RArrow className="arrow" />
+        </Button>
       </Container>
     </>
   );

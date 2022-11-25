@@ -23,7 +23,7 @@ export default function Map({ location, zoomLevel }) {
 }
 
 const GoogleMap = styled.div`
-  width: 35%;
+  width: 70%;
   height: 50vh;
   padding: 0;
   margin: 0;

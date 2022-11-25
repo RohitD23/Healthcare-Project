@@ -7,6 +7,7 @@ export default function AboutUs() {
       <Img src="images/ownerImage.jpg" alt="Owner" />
       <Info>
         <h1>About Us</h1>
+        <HorizontalLine />
         <p>
           Mamta hospital was started by Dr. Maya & Dr. Madhukar Kulkarni in
           1976, as a small nursing home to serve the rural population of Latur
@@ -45,12 +46,18 @@ const Info = styled.div`
 
   h1 {
     font-size: 3.2rem;
-    margin-bottom: 5rem;
   }
 
   p {
     width: 90%;
     font-size: 1.8rem;
     font-weight: 400;
+    margin-top: 5rem;
   }
+`;
+
+const HorizontalLine = styled.div`
+  border-bottom: 0.2rem solid #505257;
+  margin: 1rem 0;
+  margin-right: 45rem;
 `;

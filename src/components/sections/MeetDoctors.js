@@ -33,6 +33,7 @@ export default function MeetDoctors() {
   return (
     <>
       <Heading>Meet Our Specialists</Heading>
+      <HorizontalLine />
       <Container>
         <Button onClick={() => slide(-315)}>
           <LArrow className="arrow" />
@@ -52,13 +53,18 @@ const Heading = styled.div`
   font-weight: 800;
   font-size: 3.2rem;
   color: #505257;
-  margin-bottom: 5rem;
+`;
+
+const HorizontalLine = styled.div`
+  border-bottom: 0.2rem solid #505257;
+  margin: 1rem 50rem;
 `;
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5rem;
 `;
 
 const DocContainer = styled.div`

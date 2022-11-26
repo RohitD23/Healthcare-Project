@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import TextInput from "./TextInput";
+import Input from "./Input";
 
 const handleSubmit = async (event) => {
   event.preventDefault();
@@ -14,10 +14,10 @@ export default function AppointmentForm(props) {
       onSubmit={(event) => handleSubmit(event)}
       width={props.width}
     >
-      <TextInput label="First Name" />
-      <TextInput label="Last Name" />
-      <TextInput label="Enter 10 Digit Number" />
-      <TextInput label="Email" />
+      <Input label="First Name" />
+      <Input label="Last Name" />
+      <Input label="Enter 10 Digit Number" />
+      <Input label="Email" />
       <Select>
         <option value="" disabled selected>
           Select Disease

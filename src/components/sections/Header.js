@@ -27,11 +27,7 @@ export default function Header() {
       </UpperHeader>
       <LowerHeader>
         <DropDown>
-          <DropBtn
-            dropdownToggle
-            onMouseOver={() => setDropdown(false)}
-            onMouseOut={() => setDropdown(true)}
-          >
+          <DropBtn dropdownToggle onClick={() => setDropdown(!dropdown)}>
             Departments <RiArrowDropDownLine />
           </DropBtn>
           <DropdownMenu hidden={dropdown} toggle={() => setDropdown(!dropdown)}>

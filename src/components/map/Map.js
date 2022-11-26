@@ -24,7 +24,7 @@ export default function Map({ location, zoomLevel }) {
 
 const GoogleMap = styled.div`
   width: 70%;
-  height: 50vh;
+  height: 60vh;
   padding: 0;
   margin: 0;
 `;

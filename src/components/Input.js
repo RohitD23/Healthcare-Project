@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function TextInput({ label }) {
+export default function Input({ type, label, height }) {
   const [value, setValue] = useState("");
 
   function handleChange(e) {
@@ -9,8 +9,8 @@ export default function TextInput({ label }) {
   }
 
   return (
-    <InputContainer>
-      <input type="text" value={value} onChange={handleChange} />
+    <InputContainer inputHeight={height}>
+      <input type={type} value={value} onChange={handleChange} />
       <label className={value && "filled"}>{label}</label>
     </InputContainer>
   );
@@ -20,9 +20,10 @@ const InputContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  margin: 0.5rem;
 
   input {
-    height: 6rem;
+    height: ${(props) => props.inputHeight || 4}rem;
     border: none;
     outline: none;
     line-height: 1;
@@ -40,12 +41,12 @@ const InputContainer = styled.div`
   label {
     position: absolute;
     pointer-events: none;
-    transform: translate(0, 2.3rem) scale(1);
+    transform: translate(0, 2rem) scale(1);
     transform-origin: top left;
     transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     color: #6f81a5;
     font-size: 1.4rem;
-    line-height: 1;
+    line-height: 0;
     left: 1.6rem;
   }
 

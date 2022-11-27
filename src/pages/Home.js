@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <MainSection />
+      <MainSection title="Simplifying Surgery Experience in Pune" />
       <Services />
       <AboutUs />
       <MeetDoctors />

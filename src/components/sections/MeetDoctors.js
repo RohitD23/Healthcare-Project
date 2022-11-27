@@ -31,7 +31,7 @@ export default function MeetDoctors() {
   };
 
   return (
-    <>
+    <Div>
       <Heading>Meet Our Specialists</Heading>
       <HorizontalLine />
       <Container>
@@ -44,19 +44,24 @@ export default function MeetDoctors() {
           <RArrow className="arrow" />
         </Button>
       </Container>
-    </>
+    </Div>
   );
 }
+
+const Div = styled.div`
+  background-color: #178066;
+  padding: 5rem 0;
+`;
 
 const Heading = styled.div`
   text-align: center;
   font-weight: 800;
   font-size: 3.2rem;
-  color: #505257;
+  color: #fff;
 `;
 
 const HorizontalLine = styled.div`
-  border-bottom: 0.2rem solid #505257;
+  border-bottom: 0.2rem solid #fff;
   margin: 1rem 50rem;
 `;
 
@@ -93,7 +98,8 @@ const Button = styled.button`
   .arrow {
     width: 5rem;
     height: 5rem;
-    color: #178066;
+    color: #fff;
+    background-color: #178066;
   }
 
   &:hover {

@@ -12,7 +12,7 @@ export default function FeedbackForm() {
         <Input type={"text"} label={"Last Name"} />
       </Name>
       <Input type={"email"} label={"E-mail"} />
-      <Input type={"text"} label={"Feedback"} height={10} />
+      <Input type={"text"} label={"Feedback"} />
       <Button>Submit</Button>
     </Form>
   );
@@ -26,7 +26,7 @@ const Form = styled.form`
 const Heading = styled.div`
   font-size: 2.4rem;
   font-weight: 800;
-  color: #fff;
+  color: #505257;
 `;
 
 const Name = styled.div`

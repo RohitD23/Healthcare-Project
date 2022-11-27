@@ -39,6 +39,10 @@ export default function Header() {
             <DropItem>Radiology</DropItem>
           </DropdownMenu>
         </DropDown>
+        <a href="/facilities">Patient Guide</a>
+        <a href="/#aboutus">About Us</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/#contactus">Contact Us</a>
       </LowerHeader>
     </Container>
   );
@@ -65,6 +69,17 @@ const LowerHeader = styled.div`
   padding: 0 6rem;
   box-shadow: 0 2rem 1rem -1.5rem rgba(0, 0, 0, 0.2);
   background-color: white;
+
+  a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #505257;
+    margin: 1rem;
+
+    &:hover {
+      color: #178066;
+    }
+  }
 `;
 
 const LogoName = styled.a`

@@ -12,18 +12,20 @@ const location = {
 
 export default function Contact() {
   return (
-    <Container>
+    <Container id="contactus">
       <Heading>Contact Us</Heading>
       <HorizontalLine />
       <ContactContainer>
         <Map location={location} zoomLevel={17} />
         <ExtraContainer>
           <OptionsContainer>
-            <Option href="https://mail.google.com/mail/?view=cm&fs=1&to=email@domain.example">
-              <img src="icons/gmail.png" alt="Gmail" /> Mail Us
+            <Option href="https://mail.google.com/mail/?view=cm&fs=1&to=feedback@mamtahospital.com">
+              <img src="icons/gmail.png" alt="Gmail" /> Mail Us -
+              feedback@mamtahospital.com
             </Option>
             <Option href="https://wa.me/9307530213">
-              <img src="icons/whatsapp.png" alt="Whatsapp" /> WhatsApp Us
+              <img src="icons/whatsapp.png" alt="Whatsapp" /> WhatsApp Us -
+              9307530213
             </Option>
             <Option href="tel:+919307530213">
               <img src="icons/phone.png" alt="Call" /> Call Us - 02382-243493
@@ -37,20 +39,18 @@ export default function Contact() {
 }
 
 const Container = styled.div`
-  background-color: #178066;
-  margin-top: 10rem;
-  padding-top: 5rem;
+  padding-top: 8rem;
 `;
 
 const Heading = styled.div`
-  color: #fff;
+  color: #505257;
   font-size: 3.2rem;
   font-weight: 800;
   text-align: center;
 `;
 
 const HorizontalLine = styled.div`
-  border-bottom: 0.2rem solid #fff;
+  border-bottom: 0.2rem solid #505257;
   margin: 1rem 60rem;
 `;
 
@@ -75,7 +75,7 @@ const OptionsContainer = styled.div`
 
 const Option = styled.a`
   text-decoration: none;
-  color: #fff;
+  color: #505257;
   font-size: 1.6rem;
   font-weight: 800;
   display: flex;

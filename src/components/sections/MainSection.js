@@ -5,13 +5,13 @@ import { FiPhoneCall } from "react-icons/fi";
 import PopUp from "../PopUp";
 import AppointmentForm from "../AppointmentForm";
 
-export default function MainSection() {
+export default function MainSection({ title }) {
   const [trigger, setTrigger] = useState(false);
 
   return (
     <Container>
       <TextContainer>
-        <Heading>Simplifying Surgery Experience in Pune</Heading>
+        <Heading>{title}</Heading>
         <BtnsContainer>
           <CallButton>
             <a href="tel:+919307530213">

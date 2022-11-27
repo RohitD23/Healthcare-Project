@@ -29,11 +29,11 @@ const Container = styled.div`
   h1 {
     font-size: 1.8rem;
     font-weight: 800;
-    color: #505257;
+    color: #fff;
   }
 
   p {
     font-size: 1.2rem;
-    color: #505257;
+    color: #fff;
   }
 `;

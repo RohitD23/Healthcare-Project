@@ -23,14 +23,15 @@ const InputContainer = styled.div`
   margin: 0.5rem;
 
   input {
-    height: ${(props) => props.inputHeight || 4}rem;
+    height: ${(props) => props.inputHeight || 5}rem;
     border: none;
     outline: none;
     line-height: 1;
     font-size: 1.4rem;
     border-radius: 0.4rem;
     box-shadow: 0 0 0 0.1rem #6f81a5;
-    padding: 2.4rem 1.6rem 0.4rem 1.6rem;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
     transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   }
 
@@ -46,16 +47,16 @@ const InputContainer = styled.div`
     transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     color: #6f81a5;
     font-size: 1.4rem;
-    line-height: 0;
+    line-height: 1;
     left: 1.6rem;
   }
 
   &:focus-within label {
-    transform: translate(0, 1.2rem) scale(0.8);
+    transform: translate(0, 1rem) scale(0.8);
     color: #178066;
   }
 
   .filled {
-    transform: translate(0, 1.2rem) scale(0.8);
+    transform: translate(0, 1rem) scale(0.8);
   }
 `;

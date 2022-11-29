@@ -17,7 +17,10 @@ export default function Header() {
   return (
     <Container>
       <UpperHeader>
-        <LogoName href="/">Mamta Hospital</LogoName>
+        <LogoName href="/">
+          <img src="images/company-logo.png" alt="logo" />
+          Mamta Hospital
+        </LogoName>
         <AppointmentButton onClick={() => setTrigger(true)}>
           Book Free Appointment
         </AppointmentButton>
@@ -31,7 +34,7 @@ export default function Header() {
             Departments <RiArrowDropDownLine />
           </DropBtn>
           <DropdownMenu hidden={dropdown} toggle={() => setDropdown(!dropdown)}>
-            <DropItem>Gynaecology </DropItem>
+            <DropItem>Obst. & Gynaecology </DropItem>
             <DropItem>Urology</DropItem>
             <DropItem>Orthopedics</DropItem>
             <DropItem>Infertility Care</DropItem>
@@ -90,6 +93,12 @@ const LogoName = styled.a`
   font-weight: 800;
   text-decoration: none;
   color: #fff;
+
+  img {
+    height: 5rem;
+    width: 5rem;
+    margin-right: 1rem;
+  }
 `;
 
 const AppointmentButton = styled.button`

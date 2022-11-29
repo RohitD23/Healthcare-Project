@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import { servicesData } from "../../models/ServicesData";
-import ServiceCard from "./../cards/ServiceCard";
+import { servicesData } from "../../../models/ServicesData";
+import ServiceCard from "../../cards/ServiceCard";
 
 export default function Services() {
   const [services, setServices] = useState([]);

@@ -57,6 +57,6 @@ const Button = styled.div`
   &:hover {
     background-color: #fff;
     color: #178066;
-    border-color: #178066;
+    border: 0.1rem solid #178066;
   }
 `;

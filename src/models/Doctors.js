@@ -2,32 +2,32 @@ export const Doctors = [
   {
     name: "Dr. Maya Kulkarni",
     img: "doctors/DrMaya.jpg",
-    field: ["Gynaecology"],
+    field: ["Obst. & Gynaecology"],
   },
   {
     name: "Dr. Rameshwari Allahabade",
     img: "doctors/DrRameshwari.jpg",
-    field: ["Gynaecology"],
+    field: ["Obst. & Gynaecology"],
   },
   {
     name: "Dr. Prachi Ruikar",
     img: "doctors/DrPrachi.jpg",
-    field: ["Gynaecology"],
+    field: ["Obst. & Gynaecology"],
   },
   {
     name: "Dr. Rajashree Gundwar",
     img: "doctors/DrRajashree.jpg",
-    field: ["Gynaecology"],
+    field: ["Obst. & Gynaecology"],
   },
   {
     name: "Dr. Vaishali Tekale",
     img: "doctors/DrVaishali.jpg",
-    field: ["Gynaecology", "Infertility Care"],
+    field: ["Obst. & Gynaecology", "Infertility Care"],
   },
   {
     name: "Dr. Anuja Kulkarni",
     img: "doctors/DrAnuja.jpg",
-    field: ["Gynaecology", "Infertility Care"],
+    field: ["Obst. & Gynaecology", "Infertility Care"],
   },
   {
     name: "Dr. Vishvas Kulkarni",

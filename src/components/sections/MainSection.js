@@ -29,15 +29,15 @@ export default function MainSection({ title }) {
           Book Free Appointments With Our Expert Doctors
         </BannerHeading>
         <BannerItem>
-          <Img src="icons/free.png" alt="Free Icon" />
+          <Img src="icons/main-section/free.png" alt="Free Icon" />
           Get free consultation for 50+ diseases
         </BannerItem>
         <BannerItem>
-          <Img src="icons/doctor.png" alt="Doctor Icon" />
+          <Img src="icons/main-section/doctor.png" alt="Doctor Icon" />
           In-person and online consultation with experienced doctors
         </BannerItem>
         <BannerItem>
-          <Img src="icons/healthcare.png" alt="Care Icon" />
+          <Img src="icons/main-section/healthcare.png" alt="Care Icon" />
           Extensive medical assistance throughout your treatment
         </BannerItem>
       </TextContainer>

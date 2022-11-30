@@ -20,15 +20,16 @@ export default function Contact() {
         <ExtraContainer>
           <OptionsContainer>
             <Option href="https://mail.google.com/mail/?view=cm&fs=1&to=feedback@mamtahospital.com">
-              <img src="icons/gmail.png" alt="Gmail" /> Mail Us -
-              feedback@mamtahospital.com
+              <img src="icons/contact-icons/gmail.png" alt="Gmail" />
+              Mail Us - feedback@mamtahospital.com
             </Option>
             <Option href="https://wa.me/9307530213">
-              <img src="icons/whatsapp.png" alt="Whatsapp" /> WhatsApp Us -
-              9307530213
+              <img src="icons/contact-icons/whatsapp.png" alt="Whatsapp" />
+              WhatsApp Us - 9307530213
             </Option>
             <Option href="tel:+919307530213">
-              <img src="icons/phone.png" alt="Call" /> Call Us - 02382-243493
+              <img src="icons/contact-icons/phone.png" alt="Call" />
+              Call Us - 02382-243493
             </Option>
           </OptionsContainer>
           <FeedbackForm />

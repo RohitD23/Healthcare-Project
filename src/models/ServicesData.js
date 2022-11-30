@@ -1,26 +1,26 @@
 export const servicesData = [
   {
     name: "Gynaecology",
-    imgSrc: "services_icons/uterus.png",
+    imgSrc: "icons/services-icons/uterus.png",
   },
   {
     name: "Urology",
-    imgSrc: "services_icons/urology.png",
+    imgSrc: "icons/services-icons/urology.png",
   },
   {
     name: "Orthopedics",
-    imgSrc: "services_icons/orthopedics.png",
+    imgSrc: "icons/services-icons/orthopedics.png",
   },
   {
     name: "Infertility Care",
-    imgSrc: "services_icons/infertility.png",
+    imgSrc: "icons/services-icons/infertility.png",
   },
   {
     name: "Pathology",
-    imgSrc: "services_icons/microscope.png",
+    imgSrc: "icons/services-icons/microscope.png",
   },
   {
     name: "Radiology",
-    imgSrc: "services_icons/mri.png",
+    imgSrc: "icons/services-icons/mri.png",
   },
 ];

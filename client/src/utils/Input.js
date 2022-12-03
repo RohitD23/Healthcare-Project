@@ -1,13 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-export default function Input({ type, label, height }) {
-  const [value, setValue] = useState("");
-
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-
+export default function Input({ value, handleChange, type, label, height }) {
   return (
     <InputContainer inputHeight={height}>
       <input type={type} value={value} onChange={handleChange} />

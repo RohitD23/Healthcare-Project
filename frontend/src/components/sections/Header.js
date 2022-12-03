@@ -8,7 +8,7 @@ import {
 import { RiArrowDropDownLine } from "react-icons/ri";
 
 import PopUp from "../PopUp";
-import AppointmentForm from "./../AppointmentForm";
+import AppointmentForm from "../AppointmentForm";
 
 export default function Header() {
   const [trigger, setTrigger] = useState(false);

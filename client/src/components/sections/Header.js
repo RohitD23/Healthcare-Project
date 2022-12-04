@@ -7,11 +7,7 @@ import {
 } from "styled-dropdown-component";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-import PopUp from "../PopUp";
-import AppointmentForm from "../AppointmentForm";
-
 export default function Header() {
-  const [trigger, setTrigger] = useState(false);
   const [dropdown, setDropdown] = useState(true);
 
   return (
@@ -21,12 +17,17 @@ export default function Header() {
           <img src="images/company-logo.png" alt="logo" />
           Mamta Hospital
         </LogoName>
-        <AppointmentButton onClick={() => setTrigger(true)}>
-          Book Free Appointment
-        </AppointmentButton>
-        <PopUp trigger={trigger} setTrigger={setTrigger}>
-          <AppointmentForm width={100} />
-        </PopUp>
+        <div>
+          <Button color={"#3d7cc9"} backgroundColor={"#ffff"}>
+            Employee Login
+          </Button>
+          <Button color={"#3d7cc9"} backgroundColor={"#ffff"}>
+            Patient Login
+          </Button>
+          <Button color={"#fff"} backgroundColor={"#3d7cc9"}>
+            Book Free Appointment
+          </Button>
+        </div>
       </UpperHeader>
       <LowerHeader>
         <DropDown>
@@ -101,11 +102,11 @@ const LogoName = styled.a`
   }
 `;
 
-const AppointmentButton = styled.button`
-  background-color: #3d7cc9;
-  color: #fff;
+const Button = styled.button`
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
 
-  border: 0.1rem solid #fff;
+  border: 0.1rem solid ${(props) => props.color};
   border-radius: 2.1rem;
 
   padding: 1.4rem 2rem 1.2rem;
@@ -121,9 +122,9 @@ const AppointmentButton = styled.button`
   transition: 0.5s;
 
   &:hover {
-    background-color: #fff;
-    color: #3d7cc9;
-    border-color: #3d7cc9;
+    background-color: ${(props) => props.color};
+    color: ${(props) => props.backgroundColor};
+    border-color: ${(props) => props.backgroundColor};
   }
 `;
 

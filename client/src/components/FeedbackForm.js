@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Input from "../utils/Input";
+import { httpSubmitFeedback } from "../utils/request";
 
 export default function FeedbackForm() {
   const toastOptions = {
@@ -14,36 +15,44 @@ export default function FeedbackForm() {
     theme: "dark",
   };
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [feedback, setFeedback] = useState("");
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    feedback: "",
+  });
 
-  function handleFirstName(e) {
-    setFirstName(e.target.value);
-  }
-  function handleLastName(e) {
-    setLastName(e.target.value);
-  }
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-  function handleFeedback(e) {
-    setFeedback(e.target.value);
-  }
+  const handleChange = (event) => {
+    setData({ ...data, [event.target.name]: event.target.value });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (handleValidation()) {
+      const response = await httpSubmitFeedback(data);
     }
   };
 
   const handleValidation = () => {
-    if (firstName === "") {
+    if (data.firstName === "") {
       toast.error("First Name required.", toastOptions);
       return false;
     }
+    if (data.lastName === "") {
+      toast.error("Last Name required.", toastOptions);
+      return false;
+    }
+    if (data.email === "") {
+      toast.error("Email required.", toastOptions);
+      return false;
+    }
+    if (data.feedback === "") {
+      toast.error("Feedback required.", toastOptions);
+      return false;
+    }
+
+    return true;
   };
 
   return (
@@ -52,27 +61,31 @@ export default function FeedbackForm() {
         <Heading>Feedback</Heading>
         <Name>
           <Input
-            value={firstName}
-            handleChange={handleFirstName}
+            value={data.firstName}
+            handleChange={handleChange}
+            name={"firstName"}
             type={"text"}
             label={"First Name"}
           />
           <Input
-            value={lastName}
-            handleChange={handleLastName}
+            value={data.lastName}
+            handleChange={handleChange}
+            name={"lastName"}
             type={"text"}
             label={"Last Name"}
           />
         </Name>
         <Input
-          value={email}
-          handleChange={handleEmail}
+          value={data.email}
+          handleChange={handleChange}
+          name={"email"}
           type={"email"}
           label={"E-mail"}
         />
         <Input
-          value={feedback}
-          handleChange={handleFeedback}
+          value={data.feedback}
+          handleChange={handleChange}
+          name={"feedback"}
           type={"text"}
           label={"Feedback"}
         />
@@ -102,7 +115,7 @@ const Name = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #178066;
+  background-color: #3d7cc9;
   color: #fff;
 
   border: 0.1rem solid #fff;
@@ -123,7 +136,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: #fff;
-    color: #178066;
-    border: 0.1rem solid #178066;
+    color: #3d7cc9;
+    border: 0.1rem solid #3d7cc9;
   }
 `;

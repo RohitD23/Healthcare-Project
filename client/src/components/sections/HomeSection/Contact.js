@@ -76,7 +76,7 @@ const OptionsContainer = styled.div`
 
 const Option = styled.a`
   text-decoration: none;
-  background-color: #178066;
+  background-color: #3d7cc9;
   color: #fff;
 
   font-size: 1.6rem;
@@ -101,7 +101,7 @@ const Option = styled.a`
 
   &:hover {
     background-color: #fff;
-    color: #178066;
-    border: 0.1rem solid #178066;
+    color: #3d7cc9;
+    border: 0.1rem solid #3d7cc9;
   }
 `;

@@ -2,10 +2,10 @@
   "name": "cllg-project-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "watch": "nodemon index.js",
-    "start": "node index.js",
+    "watch": "nodemon src/app.js",
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,9 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "firebase": "^9.14.0",
+    "helmet": "^6.0.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.20"
   }
 }

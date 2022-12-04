@@ -69,7 +69,7 @@ export default function Footer() {
 }
 
 const Container = styled.div`
-  background-color: #178066;
+  background-color: #3d7cc9;
   margin-top: 5rem;
   padding-bottom: 8rem;
 
@@ -130,7 +130,7 @@ const Schedule = styled.div`
 
   font-size: 1.4rem;
   font-weight: 800;
-  color: #178066;
+  color: #3d7cc9;
 `;
 
 const Day = styled.div`
@@ -138,7 +138,7 @@ const Day = styled.div`
 `;
 
 const HorizontalLine = styled.div`
-  border-bottom: 0.2rem solid #0e4d3d;
+  border-bottom: 0.2rem solid #2d5d96;
   margin-bottom: 2rem;
 `;
 
@@ -147,8 +147,8 @@ const Button = styled.button`
   left: 4rem;
   bottom: -2.5rem;
 
-  background-color: #178066;
-  border-color: #0e4d3d;
+  background-color: #3d7cc9;
+  border-color: #2d5d96;
   color: #ffffff;
 
   display: flex;

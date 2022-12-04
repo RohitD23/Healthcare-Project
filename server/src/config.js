@@ -1,5 +1,4 @@
 const firebase = require("firebase/compat/app");
-require("firebase/compat/firestore");
 
 const firebaseConfig = {
   apiKey: "AIzaSyBg2GgfWWa9k1mB_TW7QCOX4soXrsifBUQ",
@@ -7,13 +6,10 @@ const firebaseConfig = {
   projectId: "healthcare-project-2ea91",
   storageBucket: "healthcare-project-2ea91.appspot.com",
   messagingSenderId: "203871386703",
-  appId: "1:203871386703:web:e05bdfe79454653505fe3a",
-  measurementId: "G-8V4LY58T0Z",
+  appId: "1:203871386703:web:6c4088fbcca3088b05fe3a",
+  measurementId: "G-HQXTSWE71F",
 };
 
-firebase.initializeApp(firebaseConfig);
+const db = firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-const User = db.collection("Users");
-
-module.exports = { db, User };
+module.exports = db;

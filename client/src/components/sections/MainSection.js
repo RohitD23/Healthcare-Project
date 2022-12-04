@@ -83,7 +83,7 @@ const CallButton = styled.button`
   border: none;
   cursor: pointer;
 
-  background-color: #178066;
+  background-color: #3d7cc9;
 
   transition: 0.5s;
 
@@ -112,10 +112,10 @@ const AppointmentButton = styled.button`
   justify-content: center;
 
   border-radius: 5rem;
-  border: 0.1rem solid #178066;
+  border: 0.1rem solid #3d7cc9;
   cursor: pointer;
 
-  color: #178066;
+  color: #3d7cc9;
   background-color: #fcfaf7;
 
   transition: 0.5s;

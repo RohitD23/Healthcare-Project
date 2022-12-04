@@ -78,7 +78,7 @@ const Container = styled.div`
   padding-top: 10rem;
 
   .style-icon {
-    color: #178066;
+    color: #3d7cc9;
     height: 5rem;
     width: 5rem;
   }

@@ -49,7 +49,7 @@ export default function MeetDoctors() {
 }
 
 const Div = styled.div`
-  background-color: #178066;
+  background-color: #3d7cc9;
   padding: 5rem 0;
 `;
 
@@ -99,7 +99,7 @@ const Button = styled.button`
     width: 5rem;
     height: 5rem;
     color: #fff;
-    background-color: #178066;
+    background-color: #3d7cc9;
   }
 
   &:hover {

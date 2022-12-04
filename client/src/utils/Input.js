@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Input({ value, handleChange, type, label, height }) {
+export default function Input({
+  value,
+  handleChange,
+  name,
+  type,
+  label,
+  height,
+}) {
   return (
     <InputContainer inputHeight={height}>
-      <input type={type} value={value} onChange={handleChange} />
+      <input type={type} value={value} name={name} onChange={handleChange} />
       <label className={value && "filled"}>{label}</label>
     </InputContainer>
   );
@@ -30,7 +37,7 @@ const InputContainer = styled.div`
   }
 
   input:focus {
-    box-shadow: 0 0 0 0.2rem #178066;
+    box-shadow: 0 0 0 0.2rem #3d7cc9;
   }
 
   label {
@@ -47,7 +54,7 @@ const InputContainer = styled.div`
 
   &:focus-within label {
     transform: translate(0, 1rem) scale(0.8);
-    color: #178066;
+    color: #3d7cc9;
   }
 
   .filled {

@@ -58,7 +58,7 @@ const Container = styled.div`
 `;
 
 const UpperHeader = styled.div`
-  background-color: #178066;
+  background-color: #3d7cc9;
 
   justify-content: space-between;
   display: flex;
@@ -80,7 +80,7 @@ const LowerHeader = styled.div`
     margin: 1rem;
 
     &:hover {
-      color: #178066;
+      color: #3d7cc9;
     }
   }
 `;
@@ -102,7 +102,7 @@ const LogoName = styled.a`
 `;
 
 const AppointmentButton = styled.button`
-  background-color: #178066;
+  background-color: #3d7cc9;
   color: #fff;
 
   border: 0.1rem solid #fff;
@@ -122,8 +122,8 @@ const AppointmentButton = styled.button`
 
   &:hover {
     background-color: #fff;
-    color: #178066;
-    border-color: #178066;
+    color: #3d7cc9;
+    border-color: #3d7cc9;
   }
 `;
 
@@ -148,7 +148,7 @@ const DropBtn = styled.button`
   color: #505257;
 
   &:hover {
-    color: #178066;
+    color: #3d7cc9;
   }
 `;
 

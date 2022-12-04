@@ -29,7 +29,7 @@ export default function Services() {
 }
 
 const Container = styled.div`
-  background-color: #178066;
+  background-color: #3d7cc9;
   display: flex;
   flex-direction: column;
   padding: 10rem 0;

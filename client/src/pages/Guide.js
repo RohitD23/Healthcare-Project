@@ -1,8 +1,8 @@
 import React from "react";
 
-import Header from "../components/sections/Header";
+import Header from "../components/sections/Header/Header";
 import MainSection from "../components/sections/MainSection";
-import Footer from "../components/sections/Footer";
+import Footer from "../components/sections/Footer/Footer";
 
 import GuideInfo from "../components/sections/GuideSection/GuideInfo";
 import AddFacilities from "../components/sections/GuideSection/AddFaclities";

@@ -14,7 +14,7 @@ export default function TPA() {
         <li>MD India Healthcare Services(TPA)Pvt. Ltd. </li>
         <li>Health India TPA Services Pvt. Ltd. </li>
         <li>Rastriya Swasthya Bima Yojana (RSBY).</li>
-        <li>Dedicated – Healthcare Services Ltd.</li>
+        <li>Dedicated - Healthcare Services Ltd.</li>
       </ul>
       <p>(*Note- For IPD Treatment only)</p>
     </Container>

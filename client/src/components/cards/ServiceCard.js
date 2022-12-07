@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ServiceCard({ name, imgSrc }) {
+export default function ServiceCard({ name, src, imgSrc }) {
   return (
-    <Card>
+    <Card href={src}>
       <img src={imgSrc} alt={name} />
       <p>{name}</p>
     </Card>
   );
 }
 
-const Card = styled.li`
+const Card = styled.a`
   background-color: #fff;
+
+  text-decoration: none;
 
   display: flex;
   flex-direction: column;

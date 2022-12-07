@@ -13,6 +13,7 @@ export default function Services() {
         <ServiceCard
           key={service.name}
           name={service.name}
+          src={service.src}
           imgSrc={service.imgSrc}
         />
       ))

@@ -7,10 +7,9 @@ const addFeedback = async (req, res, next) => {
 
     await feedbackDB.add(data);
 
-    return res.status(200).json({ mssg: "Feedback Registered" });
+    return res.status(200).json({ ok: true });
   } catch (error) {
-    console.log(error.message);
-    return res.status(400).send(error.message);
+    return res.status(400).json({ ok: false });
   }
 };
 

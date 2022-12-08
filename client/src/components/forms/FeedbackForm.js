@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Input from "../utils/Input";
-import { httpSubmitFeedback } from "../utils/request";
+import Input from "../../utils/Input";
+import { httpSubmitFeedback } from "../../utils/request";
 
 export default function FeedbackForm() {
   const toastOptions = {
@@ -13,6 +13,7 @@ export default function FeedbackForm() {
     pauseOnHover: true,
     draggable: true,
     theme: "dark",
+    toastWidth: "4.8rem",
   };
 
   const [data, setData] = useState({
@@ -31,6 +32,9 @@ export default function FeedbackForm() {
 
     if (handleValidation()) {
       const response = await httpSubmitFeedback(data);
+
+      if (response.ok) toast.success("Feedback Registered", toastOptions);
+      else toast.error("Failed to register feedback", toastOptions);
     }
   };
 
@@ -91,7 +95,7 @@ export default function FeedbackForm() {
         />
         <Button type="submit">Submit</Button>
       </Form>
-      <ToastContainer />
+      <ToastContainer style={{ fontSize: "1.4rem" }} />
     </Container>
   );
 }

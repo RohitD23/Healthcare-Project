@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Map from "../../map/Map";
-import FeedbackForm from "../../FeedbackForm";
+import FeedbackForm from "../../forms/FeedbackForm";
 
 const location = {
   address: "Mamta Hospital",

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FiPhoneCall } from "react-icons/fi";
 
-import PopUp from "../PopUp";
-import AppointmentForm from "../AppointmentForm";
+import PopUp from "../../utils/PopUp";
+import AppointmentForm from "../forms/AppointmentForm";
 
 export default function MainSection({ title }) {
   const [trigger, setTrigger] = useState(false);

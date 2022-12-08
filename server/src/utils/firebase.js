@@ -1,4 +1,5 @@
 const firebase = require("firebase/compat/app");
+require("firebase/compat/firestore");
 
 const firebaseConfig = {
   apiKey: "AIzaSyBg2GgfWWa9k1mB_TW7QCOX4soXrsifBUQ",
@@ -10,6 +11,5 @@ const firebaseConfig = {
   measurementId: "G-HQXTSWE71F",
 };
 
-const db = firebase.initializeApp(firebaseConfig);
-
-module.exports = db;
+firebase.initializeApp(firebaseConfig); //initialize firebase app
+module.exports = { firebase };

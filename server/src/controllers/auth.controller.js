@@ -1,11 +1,9 @@
-const { feedbackDB } = require("../model/feedback.model");
+const { employessDB } = require("../model/employee.model");
 
-const addFeedback = async (req, res) => {
+const loginUser = async (req, res) => {
   try {
     const data = req.body;
     console.log(data);
-
-    await feedbackDB.add(data);
 
     return res.status(200).json({ ok: true });
   } catch (error) {
@@ -13,4 +11,4 @@ const addFeedback = async (req, res) => {
   }
 };
 
-module.exports = { addFeedback };
+module.exports = { loginUser };

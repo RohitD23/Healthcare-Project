@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Input from "../utils/Input";
+import { httpLogIn } from "../utils/request";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,22 +18,23 @@ export default function Login() {
     theme: "dark",
   };
 
+  const { state } = useLocation();
+  const { type } = state;
   const [values, setValues] = useState({
     email: "",
     password: "",
+    type: type,
   });
-  const { state } = useLocation();
-  const { type } = state;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (handleValidation()) {
-      //const response = await httpLogIn(values);
-      //   if (response.ok === false) {
-      //     toast.error(response.error, toastOptions);
-      //   } else {
-      //     navigate("/");
-      //   }
+      const response = await httpLogIn(values);
+      if (response.ok === false) {
+        toast.error(response.error, toastOptions);
+      } else {
+        navigate("/");
+      }
     }
   };
 
@@ -54,17 +56,6 @@ export default function Login() {
     return true;
   };
 
-  //   useEffect(() => {
-  //     async function checkUserLoggedIn() {
-  //       //   const response = await httpCheckUserLoggedIn();
-  //       //   if (response === true) {
-  //       //     navigate("/");
-  //       //   }
-  //     }
-  //     checkUserLoggedIn();
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, []);
-
   return (
     <>
       <FormContainer>
@@ -74,6 +65,7 @@ export default function Login() {
             <h1>Mamta Hospital</h1>
           </Brand>
           <Input
+            width={35}
             type="email"
             label="E-mail"
             name="email"
@@ -81,6 +73,7 @@ export default function Login() {
             handleChange={handleChange}
           />
           <Input
+            width={35}
             type="password"
             label="Password"
             name="password"
@@ -116,6 +109,7 @@ const FormContainer = styled.div`
     color: #505257;
     text-transform: uppercase;
     text-align: center;
+    font-size: 1.2rem;
 
     a {
       color: #3d7cc9;
@@ -157,10 +151,10 @@ const Form = styled.form`
 
 const Button = styled.button`
   background-color: #3d7cc9;
-  color: white;
+  color: #ffffff;
 
-  width: 100%;
   padding: 1rem 2rem;
+  margin: 0 0.5rem;
 
   border: none;
   border-radius: 0.4rem;

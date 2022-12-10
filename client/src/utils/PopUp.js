@@ -45,7 +45,7 @@ const PopUpContainer = styled.div`
 const TopContainer = styled.div`
   height: 5.5rem;
   width: 100%;
-  background-color: #178066;
+  background-color: #3d7cc9;
 
   border-radius: 1rem 1rem 0 0;
 `;

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Guide from "./pages/Guide";
+import Login from "./pages/Login";
 
 import Gynaecology from "./pages/Departments/Gynaecology";
 import Urology from "./pages/Departments/Urology";
@@ -15,7 +16,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/login" element={<Login />} />
+
         <Route path="/facilities" element={<Guide />} />
+
         <Route path="/gynaecology" element={<Gynaecology />} />
         <Route path="/urology" element={<Urology />} />
         <Route path="/orthopedics" element={<Orthopedics />} />

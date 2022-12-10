@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
+import PopUp from "../../../utils/PopUp";
 
 export default function UpperHeader() {
+  const [trigger, setTrigger] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <Container>
       <LogoName href="/">
@@ -9,15 +15,28 @@ export default function UpperHeader() {
         Mamta Hospital
       </LogoName>
       <div>
-        <Button color={"#3d7cc9"} backgroundColor={"#ffff"}>
+        <Button
+          color={"#3d7cc9"}
+          backgroundColor={"#ffff"}
+          onClick={() => navigate("/login", { state: { type: "employee" } })}
+        >
           Employee Login
         </Button>
-        <Button color={"#3d7cc9"} backgroundColor={"#ffff"}>
+        <Button
+          color={"#3d7cc9"}
+          backgroundColor={"#ffff"}
+          onClick={() => navigate("/login", { state: { type: "patient" } })}
+        >
           Patient Login
         </Button>
-        <Button color={"#fff"} backgroundColor={"#3d7cc9"}>
+        <Button
+          color={"#fff"}
+          backgroundColor={"#3d7cc9"}
+          onClick={() => setTrigger(true)}
+        >
           Book Free Appointment
         </Button>
+        <PopUp trigger={trigger} setTrigger={setTrigger} />
       </div>
     </Container>
   );

@@ -1,39 +1,70 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function DoctorCard({ name, imgSrc, field }) {
+import { AiFillStar } from "react-icons/ai";
+
+export default function DoctorCard({ imgSrc, name, rating, field }) {
+  let stars = [];
+
+  for (let i = 0; i < rating; i++) {
+    stars.push(<AiFillStar style={{ color: "#ff8300", scale: "2.5" }} />);
+  }
+
   return (
     <Container>
-      <img src={imgSrc} alt={name} />
-      <h1>{name}</h1>
-      <p>{field}</p>
+      <ProfilePhoto src={imgSrc}></ProfilePhoto>
+
+      <Name>{name}</Name>
+      <Field>{field}</Field>
+
+      <RatingContainer>
+        {stars}
+        <Rating>{rating + "/5"}</Rating>
+      </RatingContainer>
     </Container>
   );
 }
 
 const Container = styled.div`
-  flex-shrink: 0;
-  width: 30rem;
-  height: 35rem;
+  margin: 2rem;
 
   display: flex;
   flex-direction: column;
+
+  background: #ffffff;
+  border-radius: 1rem;
+`;
+
+const ProfilePhoto = styled.img`
+  height: 30rem;
+  width: 28rem;
+  border-radius: 1rem 1rem 0 0;
+`;
+
+const Name = styled.div`
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  color: #505257;
+`;
+
+const Field = styled.div`
+  font-size: 1.2rem;
+  color: #505257;
+  text-align: center;
+`;
+
+const RatingContainer = styled.div`
+  padding: 0 0.5rem;
+  margin: 1rem 0;
+  gap: 1.5rem;
+  display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+`;
 
-  img {
-    width: 25rem;
-    height: 30rem;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #fff;
-  }
-
-  p {
-    font-size: 1.2rem;
-    color: #fff;
-  }
+const Rating = styled.div`
+  font-size: 1.4rem;
+  color: #505257;
+  font-weight: 800;
 `;

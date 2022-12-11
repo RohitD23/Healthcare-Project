@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { BsArrowLeftCircleFill as LArrow } from "react-icons/bs";
 import { BsArrowRightCircleFill as RArrow } from "react-icons/bs";
 
-import { Doctors } from "../../../models/Doctors";
+import { Doctors } from "../../../models/DoctorsData";
 import DoctorCard from "../../cards/DoctorCard";
 
 export default function MeetDoctors() {
@@ -19,6 +19,7 @@ export default function MeetDoctors() {
           key={doctor.name}
           imgSrc={doctor.img}
           name={doctor.name}
+          rating={doctor.rating}
           field={doctor.field.toString()}
         />
       ))

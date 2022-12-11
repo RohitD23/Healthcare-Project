@@ -5,7 +5,7 @@ import MainSection from "../../components/sections/MainSection";
 import Footer from "../../components/sections/Footer/Footer";
 
 import ServiceInfo from "../../components/sections/Departments/ServiceInfo";
-import Obstetrics from "../../components/sections/Departments/Gynaecology/Obstetrics";
+import ObstetricsInfo from "../../components/sections/Departments/Gynaecology/ObstetricsInfo";
 import GynaecologyInfo from "../../components/sections/Departments/Gynaecology/GynaecologyInfo";
 
 import { gynaecologyInfo } from "../../models/ServiceInfo";
@@ -20,7 +20,7 @@ export default function Gynaecology() {
         info={gynaecologyInfo}
         imgSrc={"icons/services-icons/uterus.png"}
       />
-      <Obstetrics />
+      <ObstetricsInfo />
       <GynaecologyInfo />
       <Footer />
     </div>

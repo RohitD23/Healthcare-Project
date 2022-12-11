@@ -57,7 +57,7 @@ export default function LoginForm() {
   return (
     <div>
       <Form action="" onSubmit={(event) => handleSubmit(event)}>
-        <Brand>
+        <Brand href="/">
           <img src="images/company-logo.png" alt="Logo" />
           <h1>Mamta Hospital</h1>
         </Brand>
@@ -88,12 +88,14 @@ export default function LoginForm() {
   );
 }
 
-const Brand = styled.div`
+const Brand = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
 
   gap: 1rem;
+
+  text-decoration: none;
 
   img {
     height: 7rem;

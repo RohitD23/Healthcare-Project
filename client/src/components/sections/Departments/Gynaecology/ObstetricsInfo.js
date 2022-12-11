@@ -5,7 +5,7 @@ import Facility from "../Facility";
 
 import { obstetrics } from "../../../../models/ServicesData";
 
-export default function Obstetrics() {
+export default function ObstetricsInfo() {
   return (
     <Container>
       <Heading>Obstetrics Facilities</Heading>

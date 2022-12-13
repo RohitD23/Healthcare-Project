@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Input from "../../utils/Input";
+import { httpAddNewUser } from "../../utils/request";
 
 export default function RegisterForm() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export default function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const toLogin = () => {
     navigate("/login", { state: { type: "patient" } });
@@ -33,14 +35,26 @@ export default function RegisterForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (handleValidation()) {
-      //const { email, username, password } = values;
-      //   const response = await httpAddNewUser({ email, username, password });
-      //   if (response.ok === false) {
-      //     toast.error(response.error, toastOptions);
-      //   } else {
-      //     navigate("/setAvatar");
-      //   }
+      setIsLoading(true);
+
+      const { firstName, lastName, email, phoneNumber, password } = values;
+      const response = await httpAddNewUser({
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password,
+      });
+
+      if (response.ok === false) {
+        toast.error(response.msg, toastOptions);
+      } else {
+        navigate("/");
+      }
+
+      setIsLoading(false);
     }
   };
 
@@ -50,35 +64,38 @@ export default function RegisterForm() {
 
   const handleValidation = () => {
     const {
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
-      phonenumber,
+      phoneNumber,
       password,
       confirmPassword,
     } = values;
 
-    if (firstname === "") {
-      toast.error("First Name required.", toastOptions);
+    if (firstName === "") {
+      toast.error("First Name Required.", toastOptions);
       return false;
-    } else if (lastname === "") {
-      toast.error("Last Name required.", toastOptions);
+    } else if (lastName === "") {
+      toast.error("Last Name Required.", toastOptions);
       return false;
     } else if (email === "") {
-      toast.error("Email required.", toastOptions);
+      toast.error("Email Required.", toastOptions);
       return false;
-    } else if (phonenumber === "" || phonenumber.length < 10) {
-      toast.error("Please enter proper Phone Number", toastOptions);
+    } else if (phoneNumber === "" || phoneNumber.length !== 10) {
+      toast.error("Please Enter Proper Phone Number", toastOptions);
+      return false;
+    } else if (password.length < 8) {
+      toast.error("Password Length Should Be Greater Than 8", toastOptions);
       return false;
     } else if (!passwordStrength(password)) {
       toast.error(
-        "Password should contain UpperCase, LowerCase, Numbers and Symbols",
+        "Password Should Contain UpperCase, LowerCase, Numbers and Symbols",
         toastOptions
       );
       return false;
     } else if (password !== confirmPassword) {
       toast.error(
-        "Password and confirm password should be same.",
+        "Password And Confirm Password Should Be Same.",
         toastOptions
       );
       return false;
@@ -119,16 +136,16 @@ export default function RegisterForm() {
           width={35}
           type="text"
           label="First Name"
-          name="firstname"
-          value={values.firstname}
+          name="firstName"
+          value={values.firstName}
           handleChange={handleChange}
         />
         <Input
           width={35}
           type="text"
           label="Last Name"
-          name="lastname"
-          value={values.lastname}
+          name="lastName"
+          value={values.lastName}
           handleChange={handleChange}
         />
         <Input
@@ -143,8 +160,8 @@ export default function RegisterForm() {
           width={35}
           type="number"
           label="Phone Number"
-          name="phonenumber"
-          value={values.phonenumber}
+          name="phoneNumber"
+          value={values.phoneNumber}
           handleChange={handleChange}
         />
         <Input
@@ -163,7 +180,7 @@ export default function RegisterForm() {
           value={values.confirmPassword}
           handleChange={handleChange}
         />
-        <Button type="submit">Create User</Button>
+        <Button type="submit">{isLoading ? <Loader /> : "Create User"}</Button>
         <span>
           Already have an account ?{" "}
           <a
@@ -211,6 +228,10 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: #3d7cc9;
   color: #ffffff;
 
@@ -224,10 +245,31 @@ const Button = styled.button`
   border: none;
   border-radius: 0.4rem;
 
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   text-transform: uppercase;
 
   &:hover {
     background-color: #2d5d96;
+  }
+`;
+
+const Loader = styled.div`
+  border: 0.5rem solid #3d7cc9;
+  border-radius: 50%;
+  border-top: 0.5rem solid #ffffff;
+  border-bottom: 0.5rem solid #ffffff;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  animation: spin 2s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;

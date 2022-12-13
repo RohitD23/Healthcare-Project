@@ -22,6 +22,7 @@ export default function FeedbackForm() {
     email: "",
     feedback: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
@@ -31,10 +32,14 @@ export default function FeedbackForm() {
     event.preventDefault();
 
     if (handleValidation()) {
+      setIsLoading(true);
       const response = await httpSubmitFeedback(data);
+      setIsLoading(false);
 
-      if (response.ok) toast.success("Feedback Registered", toastOptions);
-      else toast.error("Failed to register feedback", toastOptions);
+      if (response.ok) {
+        toast.success(response.msg, toastOptions);
+        setData({ firstName: "", lastName: "", email: "", feedback: "" });
+      } else toast.error(response.msg, toastOptions);
     }
   };
 
@@ -93,7 +98,9 @@ export default function FeedbackForm() {
           type={"text"}
           label={"Feedback"}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? <Loader /> : "Submit"}
+        </Button>
       </Form>
       <ToastContainer style={{ fontSize: "1.4rem" }} />
     </Container>
@@ -119,6 +126,10 @@ const Name = styled.div`
 `;
 
 const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: #3d7cc9;
   color: #fff;
 
@@ -128,7 +139,6 @@ const Button = styled.button`
   padding: 1rem;
   margin: 1rem;
 
-  text-align: center;
   font-size: 2rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -142,5 +152,26 @@ const Button = styled.button`
     background-color: #fff;
     color: #3d7cc9;
     border: 0.1rem solid #3d7cc9;
+  }
+`;
+
+const Loader = styled.div`
+  border: 0.5rem solid #3d7cc9;
+  border-radius: 50%;
+  border-top: 0.5rem solid #ffffff;
+  border-bottom: 0.5rem solid #ffffff;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  animation: spin 2s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;

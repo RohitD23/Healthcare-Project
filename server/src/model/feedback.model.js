@@ -1,5 +1,9 @@
 const { db } = require("../utils/admin");
 
-const feedbackDB = db.collection("feedbacks");
+const feedbackDB = db.collection("Feedbacks");
 
-module.exports = { feedbackDB };
+const storeFeedback = async (feedback) => {
+  await feedbackDB.add(feedback);
+};
+
+module.exports = { storeFeedback };

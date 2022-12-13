@@ -23,4 +23,16 @@ async function httpLogIn(user) {
   return await response.json();
 }
 
-export { httpSubmitFeedback, httpLogIn };
+async function httpAddNewUser(user) {
+  const response = await fetch(`${API_URL}/auth/register`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+
+  return await response.json();
+}
+
+export { httpSubmitFeedback, httpLogIn, httpAddNewUser };

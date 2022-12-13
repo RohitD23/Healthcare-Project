@@ -24,13 +24,17 @@ export default function LoginForm() {
     password: "",
     type: type,
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (handleValidation()) {
+      setIsLoading(true);
       const response = await httpLogIn(values);
+      setIsLoading(false);
+
       if (response.ok === false) {
-        toast.error(response.error, toastOptions);
+        toast.error(response.msg, toastOptions);
       } else {
         navigate("/");
       }
@@ -77,7 +81,9 @@ export default function LoginForm() {
           value={values.password}
           handleChange={handleChange}
         />
-        <Button type="submit">Login</Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? <Loader /> : "Login"}
+        </Button>
         {type === "patient" && (
           <span>
             Dont't have an account ? <Link to="/register">Register.</Link>
@@ -121,6 +127,10 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: #3d7cc9;
   color: #ffffff;
 
@@ -130,7 +140,7 @@ const Button = styled.button`
   border: none;
   border-radius: 0.4rem;
 
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 800;
 
   cursor: pointer;
@@ -138,5 +148,26 @@ const Button = styled.button`
 
   &:hover {
     background-color: #2d5d96;
+  }
+`;
+
+const Loader = styled.div`
+  border: 0.5rem solid #3d7cc9;
+  border-radius: 50%;
+  border-top: 0.5rem solid #ffffff;
+  border-bottom: 0.5rem solid #ffffff;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  animation: spin 2s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;

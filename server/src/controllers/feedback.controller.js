@@ -1,15 +1,16 @@
-const { feedbackDB } = require("../model/feedback.model");
+const { storeFeedback } = require("../model/feedback.model");
 
 const addFeedback = async (req, res) => {
   try {
-    const data = req.body;
-    console.log(data);
+    const feedback = req.body;
 
-    await feedbackDB.add(data);
+    await storeFeedback(data);
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, msg: "Feedback Registered" });
   } catch (error) {
-    return res.status(400).json({ ok: false });
+    return res
+      .status(400)
+      .json({ ok: false, msg: "Failed to register feedback" });
   }
 };
 

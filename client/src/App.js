@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Guide from "./pages/Guide";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Doctors from "./pages/Doctors";
 
 import Gynaecology from "./pages/Departments/Gynaecology";
 import Urology from "./pages/Departments/Urology";
@@ -17,6 +18,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/doctorlist" element={<Doctors />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

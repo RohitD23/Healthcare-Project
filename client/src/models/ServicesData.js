@@ -32,7 +32,7 @@ export const servicesData = [
 ];
 
 export const obstetrics = {
-  fisrtData: {
+  firstData: {
     title: "ANTENATAL, INTRAPARTUM, POSTPARTUM CARE AND MANAGMENT",
     info: [
       "Routine care of pregnant women and their newborn babies.",
@@ -56,7 +56,7 @@ export const obstetrics = {
 };
 
 export const gynaecology = {
-  fisrtData: {
+  firstData: {
     title:
       "ROUTINE CARE AND MANGEMENT OF ALL GYNAECOLOGICAL PROBLEMS IN WOMEN.",
     info: [
@@ -84,7 +84,7 @@ export const gynaecology = {
       "Surgeries for uterine prolapse - Sling surgeries",
     ],
   },
-  thridData: {
+  thirdData: {
     title: "HYSTEROSCOPIC SURGERIES (Endoscopy of the uterine cavity)",
     info: [
       "Polypectomy",
@@ -126,7 +126,7 @@ export const gynaecology = {
 };
 
 export const infertility = {
-  fisrtData: {
+  firstData: {
     title: "FEMALE INFERTILITY - INVESTIGATIONS AND TREATMENT",
     info: [
       "Well-equipped laboratory for doing all relevant male and female hormonal assays and other investigations.",
@@ -145,7 +145,7 @@ export const infertility = {
       "Laparoscopic removal of ovarian cysts.",
     ],
   },
-  thridData: {
+  thirdData: {
     title: "FEMALE ENHANCING HYSTEROSCOPIC SURGERIES",
     info: [
       "Hysteroscopic septal resection by Holmium YAG Laser",

@@ -10,26 +10,32 @@ export default function GynaecologyInfo() {
     <Container>
       <Heading>Gynaecology Facilities</Heading>
       <Facility
-        title={gynaecology.fisrtData.title}
-        info={gynaecology.fisrtData.info}
+        key={gynaecology.firstData.title}
+        title={gynaecology.firstData.title}
+        info={gynaecology.firstData.info}
       />
       <Facility
+        key={gynaecology.secondData.title}
         title={gynaecology.secondData.title}
         info={gynaecology.secondData.info}
       />
       <Facility
-        title={gynaecology.thridData.title}
-        info={gynaecology.thridData.info}
+        key={gynaecology.thirdData.title}
+        title={gynaecology.thirdData.title}
+        info={gynaecology.thirdData.info}
       />
       <Facility
+        key={gynaecology.fourthData.title}
         title={gynaecology.fourthData.title}
         info={gynaecology.fourthData.info}
       />
       <Facility
+        key={gynaecology.fifthData.title}
         title={gynaecology.fifthData.title}
         info={gynaecology.fifthData.info}
       />
       <Facility
+        key={gynaecology.sixthData.title}
         title={gynaecology.sixthData.title}
         info={gynaecology.sixthData.info}
       />

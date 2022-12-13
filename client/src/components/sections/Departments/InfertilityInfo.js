@@ -10,22 +10,27 @@ export default function InfertilityInfo() {
     <Container>
       <Heading>Facilities</Heading>
       <Facility
-        title={infertility.fisrtData.title}
-        info={infertility.fisrtData.info}
+        key={infertility.firstData.title}
+        title={infertility.firstData.title}
+        info={infertility.firstData.info}
       />
       <Facility
+        key={infertility.secondData.title}
         title={infertility.secondData.title}
         info={infertility.secondData.info}
       />
       <Facility
-        title={infertility.thridData.title}
-        info={infertility.thridData.info}
+        key={infertility.thirdData.title}
+        title={infertility.thirdData.title}
+        info={infertility.thirdData.info}
       />
       <Facility
+        key={infertility.fourthData.title}
         title={infertility.fourthData.title}
         info={infertility.fourthData.info}
       />
       <Facility
+        key={infertility.fifthData.title}
         title={infertility.fifthData.title}
         info={infertility.fifthData.info}
       />

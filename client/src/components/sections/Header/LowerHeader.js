@@ -36,7 +36,7 @@ export default function LowerHeader() {
       </DropDown>
       <a href="/facilities">Patient Guide</a>
       <a href="/#aboutus">About Us</a>
-      <a href="/doctors">Doctors</a>
+      <a href="/doctorlist">Doctors</a>
       <a href="/#contactus">Contact Us</a>
     </Container>
   );

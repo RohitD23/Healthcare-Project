@@ -10,10 +10,12 @@ export default function ObstetricsInfo() {
     <Container>
       <Heading>Obstetrics Facilities</Heading>
       <Facility
-        title={obstetrics.fisrtData.title}
-        info={obstetrics.fisrtData.info}
+        key={obstetrics.firstData.title}
+        title={obstetrics.firstData.title}
+        info={obstetrics.firstData.info}
       />
       <Facility
+        key={obstetrics.secondData.title}
         title={obstetrics.secondData.title}
         info={obstetrics.secondData.info}
       />

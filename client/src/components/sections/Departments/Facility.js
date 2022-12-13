@@ -5,7 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 export default function Facility({ title, info }) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
-  const data = info.map((i) => <li>{i}</li>);
+  const data = info.map((i) => <li key={i}>{i}</li>);
 
   return (
     <Container>

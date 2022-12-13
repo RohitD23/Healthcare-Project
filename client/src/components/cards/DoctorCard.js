@@ -7,7 +7,9 @@ export default function DoctorCard({ imgSrc, name, rating, field }) {
   let stars = [];
 
   for (let i = 0; i < rating; i++) {
-    stars.push(<AiFillStar style={{ color: "#ff8300", scale: "2.5" }} />);
+    stars.push(
+      <AiFillStar key={i} style={{ color: "#ff8300", scale: "2.5" }} />
+    );
   }
 
   return (
@@ -20,6 +22,7 @@ export default function DoctorCard({ imgSrc, name, rating, field }) {
       <RatingContainer>
         {stars}
         <Rating>{rating + "/5"}</Rating>
+        <BookAppointmentButton>Book Appointment</BookAppointmentButton>
       </RatingContainer>
     </Container>
   );
@@ -30,33 +33,33 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  background: #ffffff;
+  background: #e6e6e6;
   border-radius: 1rem;
 `;
 
 const ProfilePhoto = styled.img`
   height: 30rem;
-  width: 28rem;
+  width: 30rem;
   border-radius: 1rem 1rem 0 0;
 `;
 
 const Name = styled.div`
   font-size: 2rem;
   font-weight: 800;
-  text-align: center;
   color: #505257;
 `;
 
 const Field = styled.div`
   font-size: 1.2rem;
   color: #505257;
-  text-align: center;
 `;
 
 const RatingContainer = styled.div`
   padding: 0 0.5rem;
-  margin: 1rem 0;
+  margin: 1rem 0 1rem 0.5rem;
   gap: 1.5rem;
   display: flex;
   align-items: center;
@@ -67,4 +70,18 @@ const Rating = styled.div`
   font-size: 1.4rem;
   color: #505257;
   font-weight: 800;
+`;
+
+const BookAppointmentButton = styled.button`
+  padding: 0.5rem 1rem;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  color: #ffffff;
+  background-color: #3d7cc9;
+
+  border: none;
+  border-radius: 5rem;
+  cursor: pointer;
 `;

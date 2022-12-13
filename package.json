@@ -1,0 +1,21 @@
+{
+  "name": "healthcare-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RohitD23/Healthcare-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RohitD23/Healthcare-Project/issues"
+  },
+  "homepage": "https://github.com/RohitD23/Healthcare-Project#readme"
+}

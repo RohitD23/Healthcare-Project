@@ -4,7 +4,7 @@ const addFeedback = async (req, res) => {
   try {
     const feedback = req.body;
 
-    await storeFeedback(data);
+    await storeFeedback(feedback);
 
     return res.status(200).json({ ok: true, msg: "Feedback Registered" });
   } catch (error) {

@@ -8,7 +8,7 @@ export default function Map({ location, zoomLevel }) {
   return (
     <GoogleMap>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyBhuf999lEwIvtMVeuT4pTKcPX0P_K3Qrg" }}
+        bootstrapURLKeys={{ key: process.env.MAP_KEY }}
         defaultCenter={location}
         defaultZoom={zoomLevel}
       >

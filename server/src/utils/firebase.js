@@ -1,14 +1,15 @@
 const firebase = require("firebase/compat/app");
 require("firebase/compat/firestore");
+require("dotenv").config();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBg2GgfWWa9k1mB_TW7QCOX4soXrsifBUQ",
-  authDomain: "healthcare-project-2ea91.firebaseapp.com",
-  projectId: "healthcare-project-2ea91",
-  storageBucket: "healthcare-project-2ea91.appspot.com",
-  messagingSenderId: "203871386703",
-  appId: "1:203871386703:web:6c4088fbcca3088b05fe3a",
-  measurementId: "G-HQXTSWE71F",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig); //initialize firebase app

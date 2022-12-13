@@ -1,6 +1,7 @@
 var admin = require("firebase-admin");
+require("dotenv").config();
 
-var serviceAccount = require("D:/cllg-project/server/healthcare-project-2ea91-firebase-adminsdk-29ato-48df9867b6.json");
+var serviceAccount = require(process.env.SERVICE_ACCOUNT_URL);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

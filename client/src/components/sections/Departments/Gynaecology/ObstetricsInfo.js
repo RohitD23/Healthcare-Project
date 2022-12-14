@@ -9,6 +9,7 @@ export default function ObstetricsInfo() {
   return (
     <Container>
       <Heading>Obstetrics Facilities</Heading>
+
       <Facility
         key={obstetrics.firstData.title}
         title={obstetrics.firstData.title}

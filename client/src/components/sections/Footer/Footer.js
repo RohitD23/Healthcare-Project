@@ -11,7 +11,9 @@ export default function Footer() {
         <img src="images/company-logo.png" alt="logo" />
         <Heading>Mamta Hospital</Heading>
       </Logo>
+
       <Departments Heading={Heading} />
+
       <Schedule Heading={Heading} />
     </Container>
   );

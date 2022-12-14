@@ -51,4 +51,45 @@ const storeUser = async (user) => {
   });
 };
 
-module.exports = { checkUserExists, storeUser, verifyUser };
+const addUserPasswordResetToken = async (user, token) => {
+  await usersDB.doc(user.email).update({
+    resetPasswordToken: token,
+    resetPasswordExpires: Date.now() + 3600000,
+  });
+};
+
+const resetUserPassword = async (token, newPassword) => {
+  return await usersDB
+    .where("resetPasswordToken", "==", token)
+    .get()
+    .then(async (docs) => {
+      if (!docs.empty) {
+        let id;
+        docs.forEach((doc) => {
+          id = doc.id;
+        });
+
+        if (
+          (await usersDB.doc(id).get()).data().resetPasswordExpires < Date.now()
+        ) {
+          return false;
+        }
+
+        let saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+        await usersDB.doc(id).update({
+          password: hashedPassword,
+        });
+
+        return true;
+      } else return false;
+    });
+};
+
+module.exports = {
+  checkUserExists,
+  storeUser,
+  verifyUser,
+  addUserPasswordResetToken,
+  resetUserPassword,
+};

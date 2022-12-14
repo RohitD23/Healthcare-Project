@@ -15,6 +15,7 @@ export default function GuideInfo() {
           be used to access your reports on the website at any time.
         </Para>
       </div>
+
       <div>
         <Img src="icons/guide-icons/appointment.png" alt="Icon" />
         <Heading>Appointments</Heading>
@@ -23,6 +24,7 @@ export default function GuideInfo() {
           feedback@mamtahospital.com.
         </Para>
       </div>
+
       <div>
         <Img src="icons/guide-icons/surgery-room.png" alt="Icon" />
         <Heading>Diagnostics</Heading>
@@ -31,6 +33,7 @@ export default function GuideInfo() {
           reports.
         </Para>
       </div>
+
       <div>
         <Img src="icons/guide-icons/medical-symbol.png" alt="Icon" />
         <Heading>Medical Service</Heading>
@@ -47,6 +50,7 @@ export default function GuideInfo() {
           allotment of rooms is subject to availability.
         </Para>
       </div>
+
       <div>
         <Img src="icons/guide-icons/hand-gesture.png" alt="Icon" />
         <Heading>TPA & Cashless Facilities</Heading>
@@ -55,6 +59,7 @@ export default function GuideInfo() {
           health policies.
         </Para>
       </div>
+
       <div>
         <VscFeedback className="style-icon" />
         <Heading>Feedback</Heading>

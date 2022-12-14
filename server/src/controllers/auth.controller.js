@@ -1,8 +1,20 @@
-const { verifyEmployee } = require("../model/employee.model");
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
+
+const {
+  verifyEmployee,
+  checkEmployeeExists,
+  addEmpPasswordResetToken,
+  resetEmpPassword,
+} = require("../model/employee.model");
+
 const {
   checkUserExists,
   storeUser,
   verifyUser,
+  addUserPasswordResetToken,
+  resetUserPassword,
 } = require("../model/user.model");
 
 const loginUser = async (req, res, next) => {
@@ -21,7 +33,7 @@ const loginUser = async (req, res, next) => {
     } else {
       return res
         .status(400)
-        .json({ ok: false, msg: "Incorrect Email Id or Password" });
+        .json({ ok: false, msg: "Incorrect Email Address or Password" });
     }
   } catch (error) {
     console.log(error.message);
@@ -33,20 +45,99 @@ const addNewUser = async (req, res) => {
   try {
     const user = req.body;
 
-    let response = await checkUserExists(user);
+    let status = await checkUserExists(user);
 
-    if (!response) {
+    if (!status) {
       await storeUser(user);
       return res.status(201).json({ ok: true });
     } else {
       return res
         .status(400)
-        .json({ ok: false, msg: "User with Email Id already exists" });
+        .json({ ok: false, msg: "User with Email Address already exists" });
     }
+  } catch (error) {
+    return res.status(500).json({ ok: false, msg: "Internal Server Error" });
+  }
+};
+
+const forgotPassword = async (req, res) => {
+  try {
+    let token = crypto.randomBytes(20).toString("hex");
+
+    const data = req.body;
+    let status;
+
+    if (data.type === "patient") status = await checkUserExists(data);
+    else status = await checkEmployeeExists(data);
+
+    if (status) {
+      if (data.type === "patient") await addUserPasswordResetToken(data, token);
+      else await addEmpPasswordResetToken(data, token);
+
+      await sendMail(data, token, req);
+    } else {
+      return res.status(400).json({
+        ok: false,
+        msg: "Account with this Email Address doesn't exists",
+      });
+    }
+
+    return res.status(200).json({
+      msg: "An Email with a link to reset password has been send to you",
+    });
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ ok: false, msg: "Internal Server Error" });
   }
 };
 
-module.exports = { loginUser, addNewUser };
+const sendMail = async (data, token, req) => {
+  let smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: `${process.env.SMTP_USER}`,
+      pass: `${process.env.SMTP_PASSWORD}`,
+    },
+  });
+
+  let mailOptions = {
+    to: data.email,
+    from: `${process.env.SMTP_EMAIL}`,
+    subject: "Password Reset",
+    text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n
+    Please click on the following link, or paste this into your browser to complete the process:\n
+    http://${req.headers.host}/reset?type=${data.type}&token=${token}\n
+    If you did not request this, please ignore this email and your password will remain unchanged.\n`,
+  };
+
+  smtpTransport.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      next(err);
+    }
+  });
+};
+
+const resetPassword = async (req, res) => {
+  try {
+    const { type, password, token } = req.body;
+    let status;
+
+    if (type === "patient") status = await resetUserPassword(token, password);
+    else status = await resetEmpPassword(token, password);
+
+    if (!status) {
+      return res
+        .status(400)
+        .json({ ok: false, msg: "Invalid reset link or reset link expired." });
+    }
+
+    return res
+      .status(200)
+      .json({ ok: true, msg: "Password Changed Successfully" });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ ok: false, msg: "Internal Server Error" });
+  }
+};
+
+module.exports = { loginUser, addNewUser, forgotPassword, resetPassword };

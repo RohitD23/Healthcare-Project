@@ -5,6 +5,7 @@ export default function TPA() {
   return (
     <Container>
       <Heading>TPA & Cashless Facilities </Heading>
+
       <ul>
         <li>Bajaj Allianz General Insurance.</li>
         <li>Family Health Plan Limited.</li>

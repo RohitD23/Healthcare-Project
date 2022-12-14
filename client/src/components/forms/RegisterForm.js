@@ -132,6 +132,7 @@ export default function RegisterForm() {
           <img src="images/company-logo.png" alt="Logo" />
           <h1>mamta hospital</h1>
         </Brand>
+
         <Input
           width={35}
           type="text"
@@ -140,6 +141,7 @@ export default function RegisterForm() {
           value={values.firstName}
           handleChange={handleChange}
         />
+
         <Input
           width={35}
           type="text"
@@ -148,6 +150,7 @@ export default function RegisterForm() {
           value={values.lastName}
           handleChange={handleChange}
         />
+
         <Input
           width={35}
           type="email"
@@ -156,6 +159,7 @@ export default function RegisterForm() {
           value={values.email}
           handleChange={handleChange}
         />
+
         <Input
           width={35}
           type="number"
@@ -164,6 +168,7 @@ export default function RegisterForm() {
           value={values.phoneNumber}
           handleChange={handleChange}
         />
+
         <Input
           width={35}
           type="password"
@@ -172,6 +177,7 @@ export default function RegisterForm() {
           value={values.password}
           handleChange={handleChange}
         />
+
         <Input
           width={35}
           type="password"
@@ -180,7 +186,9 @@ export default function RegisterForm() {
           value={values.confirmPassword}
           handleChange={handleChange}
         />
+
         <Button type="submit">{isLoading ? <Loader /> : "Create User"}</Button>
+
         <span>
           Already have an account ?{" "}
           <a

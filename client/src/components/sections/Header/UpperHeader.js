@@ -14,6 +14,7 @@ export default function UpperHeader() {
         <img src="images/company-logo.png" alt="logo" />
         Mamta Hospital
       </LogoName>
+
       <div>
         <Button
           color={"#3d7cc9"}
@@ -22,6 +23,7 @@ export default function UpperHeader() {
         >
           Employee Login
         </Button>
+
         <Button
           color={"#3d7cc9"}
           backgroundColor={"#ffff"}
@@ -29,6 +31,7 @@ export default function UpperHeader() {
         >
           Patient Login
         </Button>
+
         <Button
           color={"#fff"}
           backgroundColor={"#3d7cc9"}

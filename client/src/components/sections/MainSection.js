@@ -12,12 +12,14 @@ export default function MainSection({ title }) {
     <Container>
       <TextContainer>
         <Heading>{title}</Heading>
+
         <BtnsContainer>
           <CallButton>
             <a href="tel:+919307530213">
               <FiPhoneCall /> Call Us : 02382-243493
             </a>
           </CallButton>
+
           <AppointmentButton onClick={() => setTrigger(true)}>
             BOOK FREE CONSULTATION
           </AppointmentButton>
@@ -25,17 +27,21 @@ export default function MainSection({ title }) {
             <AppointmentForm width={100} />
           </PopUp>
         </BtnsContainer>
+
         <BannerHeading>
           Book Free Appointments With Our Expert Doctors
         </BannerHeading>
+
         <BannerItem>
           <Img src="icons/main-section/free.png" alt="Free Icon" />
           Get free consultation for 50+ diseases
         </BannerItem>
+
         <BannerItem>
           <Img src="icons/main-section/doctor.png" alt="Doctor Icon" />
           In-person and online consultation with experienced doctors
         </BannerItem>
+
         <BannerItem>
           <Img src="icons/main-section/healthcare.png" alt="Care Icon" />
           Extensive medical assistance throughout your treatment

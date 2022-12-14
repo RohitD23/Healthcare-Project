@@ -34,7 +34,9 @@ export default function MeetDoctors() {
   return (
     <Div>
       <Heading>Meet Our Specialists</Heading>
+
       <HorizontalLine />
+
       <Container>
         <Button onClick={() => slide(-315)}>
           <LArrow className="arrow" />

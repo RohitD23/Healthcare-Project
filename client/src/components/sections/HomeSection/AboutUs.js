@@ -5,6 +5,7 @@ export default function AboutUs() {
   return (
     <Container id="aboutus">
       <Img src="images/ownerImage.jpg" alt="Owner" />
+
       <Info>
         <h1>About Us</h1>
         <HorizontalLine />

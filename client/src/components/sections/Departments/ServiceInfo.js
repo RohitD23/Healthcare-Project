@@ -8,6 +8,7 @@ export default function ServiceInfo({ title, info, imgSrc }) {
         <Heading>{title}</Heading>
         <p>{info}</p>
       </Content>
+
       <Img>
         <img src={imgSrc} alt="Icon" />
       </Img>

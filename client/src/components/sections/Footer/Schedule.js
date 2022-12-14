@@ -6,6 +6,7 @@ export default function Schedule({ Heading }) {
   return (
     <Container>
       <Heading>We're Available On:</Heading>
+
       <SchContainer>
         <Time>
           <Day>Monday</Day>
@@ -41,7 +42,9 @@ export default function Schedule({ Heading }) {
           <Day>Sunday</Day>
           <div>Emergency only</div>
         </Time>
+
         <HorizontalLine style={{ borderColor: "red" }} />
+
         <Button>
           Schedule Appointment
           <BsCheckCircle style={{ marginLeft: "0.38rem" }} />

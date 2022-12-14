@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, Link, useLocation } from "react-router-dom";
@@ -65,6 +66,7 @@ export default function LoginForm() {
           <img src="images/company-logo.png" alt="Logo" />
           <h1>Mamta Hospital</h1>
         </Brand>
+
         <Input
           width={30}
           type="email"
@@ -73,17 +75,29 @@ export default function LoginForm() {
           value={values.email}
           handleChange={handleChange}
         />
-        <Input
-          width={30}
-          type="password"
-          label="Password"
-          name="password"
-          value={values.password}
-          handleChange={handleChange}
-        />
+
+        <div>
+          <Input
+            width={30}
+            type="password"
+            label="Password"
+            name="password"
+            value={values.password}
+            handleChange={handleChange}
+          />
+          <a
+            onClick={() =>
+              navigate("/forgotPassword", { state: { type: values.type } })
+            }
+          >
+            forgot password?
+          </a>
+        </div>
+
         <Button type="submit" disabled={isLoading}>
           {isLoading ? <Loader /> : "Login"}
         </Button>
+
         {type === "patient" && (
           <span>
             Dont't have an account ? <Link to="/register">Register.</Link>
@@ -124,6 +138,20 @@ const Form = styled.form`
   border-radius: 2rem;
 
   background-color: #ffffff;
+
+  div {
+    a {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 1rem;
+
+      font-size: 1.2rem;
+      text-decoration: underline;
+
+      color: #3d7cc9;
+      cursor: pointer;
+    }
+  }
 `;
 
 const Button = styled.button`

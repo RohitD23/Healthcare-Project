@@ -14,24 +14,30 @@ export default function Contact() {
   return (
     <Container id="contactus">
       <Heading>Contact Us</Heading>
+
       <HorizontalLine />
+
       <ContactContainer>
         <Map location={location} zoomLevel={17} />
+
         <ExtraContainer>
           <OptionsContainer>
             <Option href="https://mail.google.com/mail/?view=cm&fs=1&to=feedback@mamtahospital.com">
               <img src="icons/contact-icons/gmail.png" alt="Gmail" />
               Mail Us - feedback@mamtahospital.com
             </Option>
+
             <Option href="https://wa.me/9307530213">
               <img src="icons/contact-icons/whatsapp.png" alt="Whatsapp" />
               WhatsApp Us - 9307530213
             </Option>
+
             <Option href="tel:+919307530213">
               <img src="icons/contact-icons/phone.png" alt="Call" />
               Call Us - 02382-243493
             </Option>
           </OptionsContainer>
+
           <FeedbackForm />
         </ExtraContainer>
       </ContactContainer>

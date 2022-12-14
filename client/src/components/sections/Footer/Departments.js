@@ -5,6 +5,7 @@ export default function Departments({ Heading }) {
   return (
     <Container>
       <Heading>Departments</Heading>
+
       <Content>
         <a href="/urology">Urology</a>
         <a href="/gynaecology">Obst. & Gynaecology</a>

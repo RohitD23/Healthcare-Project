@@ -9,6 +9,7 @@ export default function InfertilityInfo() {
   return (
     <Container>
       <Heading>Facilities</Heading>
+
       <Facility
         key={infertility.firstData.title}
         title={infertility.firstData.title}

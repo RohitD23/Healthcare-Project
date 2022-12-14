@@ -23,25 +23,33 @@ export default function Stats() {
     <Container ref={ref}>
       <StatsContainer>
         <Line>|</Line>
+
         <Stat>
           <Number>{opd}+</Number>
           <Info>OPD Visits</Info>
         </Stat>
+
         <Line>|</Line>
+
         <Stat>
           <Number>{ipd}+</Number>
           <Info>IPD</Info>
         </Stat>
+
         <Line>|</Line>
+
         <Stat>
           <Number>{surgery}+</Number>
           <Info>Number of Surgeries</Info>
         </Stat>
+
         <Line>|</Line>
+
         <Stat>
           <Number>{patients}+</Number>
           <Info>Happy Patients</Info>
         </Stat>
+
         <Line>|</Line>
       </StatsContainer>
       <p>Since 2015</p>

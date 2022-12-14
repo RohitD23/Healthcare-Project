@@ -34,6 +34,7 @@ export default function DoctorList() {
         service={serviceSelected}
         setService={setServiceSelected}
       />
+
       <ListContainer>{doctors}</ListContainer>
     </div>
   );

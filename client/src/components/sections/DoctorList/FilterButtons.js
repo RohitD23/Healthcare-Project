@@ -13,6 +13,7 @@ export default function FilterButtons({ service, setService }) {
       >
         All
       </Button>
+
       <Button
         name="Obst. & Gynaecology"
         service={service}
@@ -22,6 +23,7 @@ export default function FilterButtons({ service, setService }) {
       >
         Obst. & Gynaecology
       </Button>
+
       <Button
         name="Orthopedics"
         service={service}
@@ -40,6 +42,7 @@ export default function FilterButtons({ service, setService }) {
       >
         Urology
       </Button>
+
       <Button
         name="Pathology"
         service={service}
@@ -49,6 +52,7 @@ export default function FilterButtons({ service, setService }) {
       >
         Pathology
       </Button>
+
       <Button
         name="Radiology"
         service={service}
@@ -58,6 +62,7 @@ export default function FilterButtons({ service, setService }) {
       >
         Radiology
       </Button>
+
       <Button
         name="Infertility Care"
         service={service}

@@ -14,6 +14,7 @@ export default function AddFacilities() {
             a dedicated section of staff to provide the same.
           </Para>
         </div>
+
         <div>
           <Img src="icons/guide-icons/surgery-room.png" alt="Icon" />
           <Heading2>Theatre facilities</Heading2>
@@ -22,6 +23,7 @@ export default function AddFacilities() {
             guidelines to ensure a sterile set-up during surgery.
           </Para>
         </div>
+
         <div>
           <Img src="icons/guide-icons/hall.png" alt="Icon" />
           <Heading2>Conference hal</Heading2>

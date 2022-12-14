@@ -19,6 +19,7 @@ export default function LowerHeader() {
         <DropBtn dropdownToggle onClick={() => setDropdown(!dropdown)}>
           Departments <RiArrowDropDownLine />
         </DropBtn>
+
         <DropdownMenu hidden={dropdown} toggle={() => setDropdown(!dropdown)}>
           <DropItem onClick={() => navigate("/gynaecology")}>
             Obst. & Gynaecology

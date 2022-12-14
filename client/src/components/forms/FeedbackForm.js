@@ -68,6 +68,7 @@ export default function FeedbackForm() {
     <Container>
       <Form action="" onSubmit={(event) => handleSubmit(event)}>
         <Heading>Feedback</Heading>
+
         <Name>
           <Input
             value={data.firstName}
@@ -84,6 +85,7 @@ export default function FeedbackForm() {
             label={"Last Name"}
           />
         </Name>
+
         <Input
           value={data.email}
           handleChange={handleChange}
@@ -91,6 +93,7 @@ export default function FeedbackForm() {
           type={"email"}
           label={"E-mail"}
         />
+
         <Input
           value={data.feedback}
           handleChange={handleChange}
@@ -98,6 +101,7 @@ export default function FeedbackForm() {
           type={"text"}
           label={"Feedback"}
         />
+
         <Button type="submit" disabled={isLoading}>
           {isLoading ? <Loader /> : "Submit"}
         </Button>

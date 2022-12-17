@@ -17,7 +17,7 @@ const {
   resetUserPassword,
 } = require("../model/user.model");
 
-const loginUser = async (req, res, next) => {
+const loginUser = async (req, res) => {
   try {
     const data = req.body;
     let status;
@@ -29,7 +29,10 @@ const loginUser = async (req, res, next) => {
     }
 
     if (status) {
-      return res.status(200).json({ ok: true });
+      req.session.authenticated = true;
+      req.session.user = { email: data.email, type: data.type };
+
+      return res.status(200).json({ session: req.session, ok: true });
     } else {
       return res
         .status(400)
@@ -140,4 +143,19 @@ const resetPassword = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, addNewUser, forgotPassword, resetPassword };
+const checkUserLoggedIn = async (req, res) => {
+  try {
+    return res.status(200).json({ ok: req.session.authenticated });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ ok: false, msg: "Internal Server Error" });
+  }
+};
+
+module.exports = {
+  loginUser,
+  addNewUser,
+  forgotPassword,
+  resetPassword,
+  checkUserLoggedIn,
+};

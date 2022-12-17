@@ -59,10 +59,16 @@ async function httpResetPassword(data) {
   return await response.json();
 }
 
+async function httpCheckUserLoggedIn() {
+  const response = await fetch(`${API_URL}/auth/session`);
+  return await response.json();
+}
+
 export {
   httpSubmitFeedback,
   httpLogIn,
   httpAddNewUser,
   httpForgotPassword,
   httpResetPassword,
+  httpCheckUserLoggedIn,
 };

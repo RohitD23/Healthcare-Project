@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import PopUp from "../../../utils/PopUp";
+import { httpCheckUserLoggedIn } from "../../../utils/request";
 
 export default function UpperHeader() {
   const [trigger, setTrigger] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function checkUserLoggedIn() {
+      const response = await httpCheckUserLoggedIn();
+      console.log(response);
+      setIsLoggedIn(response.ok);
+    }
+
+    checkUserLoggedIn();
+  }, []);
 
   return (
     <Container>
@@ -16,22 +28,31 @@ export default function UpperHeader() {
       </LogoName>
 
       <div>
-        <Button
-          color={"#3d7cc9"}
-          backgroundColor={"#ffff"}
-          onClick={() => navigate("/login", { state: { type: "employee" } })}
-        >
-          Employee Login
-        </Button>
+        {isLoggedIn ? (
+          <Button color={"#3d7cc9"} backgroundColor={"#ffff"}>
+            DashBoard
+          </Button>
+        ) : (
+          <>
+            <Button
+              color={"#3d7cc9"}
+              backgroundColor={"#ffff"}
+              onClick={() =>
+                navigate("/login", { state: { type: "employee" } })
+              }
+            >
+              Employee Login
+            </Button>
 
-        <Button
-          color={"#3d7cc9"}
-          backgroundColor={"#ffff"}
-          onClick={() => navigate("/login", { state: { type: "patient" } })}
-        >
-          Patient Login
-        </Button>
-
+            <Button
+              color={"#3d7cc9"}
+              backgroundColor={"#ffff"}
+              onClick={() => navigate("/login", { state: { type: "patient" } })}
+            >
+              Patient Login
+            </Button>
+          </>
+        )}
         <Button
           color={"#fff"}
           backgroundColor={"#3d7cc9"}

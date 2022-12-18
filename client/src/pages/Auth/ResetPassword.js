@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import Input from "../../utils/Input";
 import { httpResetPassword } from "../../utils/request";
@@ -14,6 +14,13 @@ export default function ResetPassword() {
     draggable: true,
     theme: "dark",
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (values.token === null) navigate("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [searchParams] = useSearchParams();
 

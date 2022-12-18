@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import RegisterForm from "../../components/forms/RegisterForm";
+import { httpCheckUserLoggedIn } from "../../utils/request";
 
 export default function Register() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function checkUserLoggedIn() {
+      const response = await httpCheckUserLoggedIn();
+      if (response.ok) navigate("/");
+    }
+
+    checkUserLoggedIn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <FormContainer>

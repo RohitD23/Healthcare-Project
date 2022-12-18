@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 import Input from "../../utils/Input";
 import { httpForgotPassword } from "../../utils/request";
 
 export default function ForgotPassword() {
+  const navigate = useNavigate();
+
   const toastOptions = {
     position: "bottom-right",
     autoClose: 8000,
@@ -16,18 +18,22 @@ export default function ForgotPassword() {
   };
 
   const { state } = useLocation();
-  const { type } = state;
-  const [values, setValues] = useState({
-    email: "",
-    type: type,
-  });
+
+  useEffect(() => {
+    if (state === null) navigate("/");
+    else setType(state.type);
+  }, [state, navigate]);
+
+  const [type, setType] = useState("");
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (handleValidation()) {
       setIsLoading(true);
-      const response = await httpForgotPassword(values);
+      const response = await httpForgotPassword({ email, type });
       setIsLoading(false);
 
       if (response.ok === false) toast.error(response.msg, toastOptions);
@@ -36,12 +42,10 @@ export default function ForgotPassword() {
   };
 
   const handleChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value });
+    setEmail(event.target.value);
   };
 
   const handleValidation = () => {
-    const { email } = values;
-
     if (email === "") {
       toast.error("Email required.", toastOptions);
       return false;
@@ -65,7 +69,7 @@ export default function ForgotPassword() {
             type="email"
             label="E-mail"
             name="email"
-            value={values.email}
+            value={email}
             handleChange={handleChange}
           />
         </div>

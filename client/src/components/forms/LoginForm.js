@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -19,19 +19,27 @@ export default function LoginForm() {
   };
 
   const { state } = useLocation();
-  const { type } = state;
+
+  useEffect(() => {
+    if (state === null) navigate("/");
+    else setType(state.type);
+  }, [state, navigate]);
+
+  const [type, setType] = useState("");
   const [values, setValues] = useState({
     email: "",
     password: "",
-    type: type,
   });
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (handleValidation()) {
       setIsLoading(true);
-      const response = await httpLogIn(values);
+
+      const { email, password } = values;
+      const response = await httpLogIn({ email, password, type });
       setIsLoading(false);
 
       if (response.ok === false) {

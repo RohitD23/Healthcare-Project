@@ -13,7 +13,6 @@ export default function UpperHeader() {
   useEffect(() => {
     async function checkUserLoggedIn() {
       const response = await httpCheckUserLoggedIn();
-      console.log(response);
       setIsLoggedIn(response.ok);
     }
 

@@ -10,6 +10,7 @@ import {
 } from "styled-dropdown-component";
 
 import PopUp from "../../../utils/PopUp";
+import ChooseService from "../../forms/ChooseService";
 import { httpCheckUserLoggedIn, httpLogout } from "../../../utils/request";
 
 export default function UpperHeader() {
@@ -57,7 +58,9 @@ export default function UpperHeader() {
               toggle={() => setDropdown(!dropdown)}
               right={true}
             >
-              <DropItem>DashBoard</DropItem>
+              <DropItem onClick={() => navigate("/dashboard/account")}>
+                DashBoard
+              </DropItem>
               <DropItem onClick={() => logout()}>Logout</DropItem>
             </DropdownMenu>
           </Dropdown>
@@ -89,7 +92,9 @@ export default function UpperHeader() {
         >
           Book Free Appointment
         </Button>
-        <PopUp trigger={trigger} setTrigger={setTrigger} />
+        <PopUp trigger={trigger} setTrigger={setTrigger}>
+          <ChooseService />
+        </PopUp>
       </BtnContainer>
     </Container>
   );

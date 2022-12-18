@@ -16,6 +16,8 @@ import Infertility from "./pages/Departments/Infertility";
 import Radiology from "./pages/Departments/Radiology";
 import Pathlogy from "./pages/Departments/Pathology";
 
+import Account from "./pages/Dashboard/Account";
+
 function App() {
   return (
     <BrowserRouter>
@@ -37,6 +39,8 @@ function App() {
         <Route path="/infertility" element={<Infertility />} />
         <Route path="/radiology" element={<Radiology />} />
         <Route path="/pathology" element={<Pathlogy />} />
+
+        <Route path="/dashboard/account" element={<Account />} />
       </Routes>
     </BrowserRouter>
   );

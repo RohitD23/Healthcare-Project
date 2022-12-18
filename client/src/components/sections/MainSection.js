@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FiPhoneCall } from "react-icons/fi";
 
 import PopUp from "../../utils/PopUp";
-import AppointmentForm from "../forms/AppointmentForm";
+import ChooseService from "../forms/ChooseService";
 
 export default function MainSection({ title }) {
   const [trigger, setTrigger] = useState(false);
@@ -24,7 +24,7 @@ export default function MainSection({ title }) {
             BOOK FREE CONSULTATION
           </AppointmentButton>
           <PopUp trigger={trigger} setTrigger={setTrigger}>
-            <AppointmentForm width={100} />
+            <ChooseService />
           </PopUp>
         </BtnsContainer>
 

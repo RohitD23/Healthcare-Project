@@ -36,7 +36,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   border-radius: 1rem;
 `;
 

@@ -145,7 +145,8 @@ const resetPassword = async (req, res) => {
 
 const checkUserLoggedIn = (req, res) => {
   try {
-    return res.status(200).json({ ok: req.session.authenticated });
+    if (req.session.authenticated) return res.status(200).json({ ok: true });
+    else return res.status(200).json({ ok: false });
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ ok: false });
@@ -154,9 +155,7 @@ const checkUserLoggedIn = (req, res) => {
 
 const logout = (req, res) => {
   try {
-    console.log(req.session);
     req.session.destroy();
-    console.log(req.session);
     return res.status(200).json({ ok: false });
   } catch (error) {
     return res.status(500);

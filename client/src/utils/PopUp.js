@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 
 export default function PopUp(props) {
+  useEffect(() => {
+    if (props.trigger) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "unset";
+  }, [props.trigger]);
+
   return props.trigger ? (
     <Container>
       <PopUpContainer>

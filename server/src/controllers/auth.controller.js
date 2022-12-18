@@ -143,12 +143,23 @@ const resetPassword = async (req, res) => {
   }
 };
 
-const checkUserLoggedIn = async (req, res) => {
+const checkUserLoggedIn = (req, res) => {
   try {
     return res.status(200).json({ ok: req.session.authenticated });
   } catch (error) {
     console.log(error.message);
-    return res.status(500).json({ ok: false, msg: "Internal Server Error" });
+    return res.status(500).json({ ok: false });
+  }
+};
+
+const logout = (req, res) => {
+  try {
+    console.log(req.session);
+    req.session.destroy();
+    console.log(req.session);
+    return res.status(200).json({ ok: false });
+  } catch (error) {
+    return res.status(500);
   }
 };
 
@@ -158,4 +169,5 @@ module.exports = {
   forgotPassword,
   resetPassword,
   checkUserLoggedIn,
+  logout,
 };

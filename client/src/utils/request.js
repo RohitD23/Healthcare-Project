@@ -64,6 +64,11 @@ async function httpCheckUserLoggedIn() {
   return await response.json();
 }
 
+async function httpLogout() {
+  const response = await fetch(`${API_URL}/auth/logout`);
+  return await response.json();
+}
+
 export {
   httpSubmitFeedback,
   httpLogIn,
@@ -71,4 +76,5 @@ export {
   httpForgotPassword,
   httpResetPassword,
   httpCheckUserLoggedIn,
+  httpLogout,
 };

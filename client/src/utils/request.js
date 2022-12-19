@@ -69,6 +69,13 @@ async function httpLogout() {
   return await response.json();
 }
 
+async function httpGetFeedback(page, limit) {
+  const response = await fetch(
+    `${API_URL}/feedback?page=${page}&limit=${limit}`
+  );
+  return await response.json();
+}
+
 export {
   httpSubmitFeedback,
   httpLogIn,
@@ -77,4 +84,5 @@ export {
   httpResetPassword,
   httpCheckUserLoggedIn,
   httpLogout,
+  httpGetFeedback,
 };

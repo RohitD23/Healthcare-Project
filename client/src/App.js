@@ -17,6 +17,7 @@ import Radiology from "./pages/Departments/Radiology";
 import Pathlogy from "./pages/Departments/Pathology";
 
 import Account from "./pages/Dashboard/Account";
+import Feedback from "./pages/Dashboard/Admin/Feedback";
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
         <Route path="/pathology" element={<Pathlogy />} />
 
         <Route path="/dashboard/account" element={<Account />} />
+
+        <Route path="/dashboard/feedbacks" element={<Feedback />} />
       </Routes>
     </BrowserRouter>
   );

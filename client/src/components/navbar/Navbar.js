@@ -3,22 +3,17 @@ import styled from "styled-components";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 
-import { FaBars } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 
-import { DoctorSidebarData } from "../../models/SidebarData";
+import { AdminSidebarData } from "../../models/SidebarData";
 import { httpLogout } from "../../utils/request";
 
 export default function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
   const [sidebarData, setSidebarData] = useState([]);
-
-  const showSidebar = () => setSidebar(!sidebar);
 
   useEffect(() => {
     setSidebarData(() =>
-      DoctorSidebarData.map((item, index) => {
+      AdminSidebarData.map((item, index) => {
         return (
           <MenuItem key={index}>
             <Link to={item.path}>
@@ -32,22 +27,10 @@ export default function Navbar() {
   }, []);
 
   return (
-    <Container>
+    <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <NavContainer>
-          <MenuBars to="#">
-            <FaBars onClick={showSidebar} />
-          </MenuBars>
-        </NavContainer>
-
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <MenuItems onClick={showSidebar}>
-            <Toggle>
-              <MenuBars to="#">
-                <AiOutlineClose />
-              </MenuBars>
-            </Toggle>
-
+        <NavMenu>
+          <MenuItems>
             {sidebarData}
 
             <MenuItem>
@@ -57,62 +40,27 @@ export default function Navbar() {
               </Link>
             </MenuItem>
           </MenuItems>
-        </nav>
+        </NavMenu>
       </IconContext.Provider>
-    </Container>
+    </>
   );
 }
 
-const Container = styled.div`
-  .nav-menu {
-    background-color: #3d7cc9;
-
-    width: 25rem;
-    height: 100vh;
-
-    display: flex;
-    justify-content: center;
-
-    position: fixed;
-    top: 0;
-    left: -100%;
-    transition: 850ms;
-  }
-
-  .nav-menu.active {
-    left: 0;
-    transition: 350ms;
-  }
-`;
-
-const NavContainer = styled.div`
+const NavMenu = styled.nav`
   background-color: #3d7cc9;
-  height: 6rem;
+
+  width: 25rem;
+  height: 100vh;
 
   display: flex;
-  justify-content: start;
-  align-items: center;
-`;
+  justify-content: center;
 
-const MenuBars = styled(Link)`
-  margin-left: 2rem;
-  font-size: 2rem;
-  background: none;
+  position: fixed;
+  top: 0;
 `;
 
 const MenuItems = styled.ul`
   width: 100%;
-`;
-
-const Toggle = styled.li`
-  background-color: #3d7cc9;
-
-  width: 100%;
-  height: 7rem;
-
-  display: flex;
-  justify-content: start;
-  align-items: center;
 `;
 
 const MenuItem = styled.li`
@@ -141,7 +89,7 @@ const MenuItem = styled.li`
   }
 
   a:hover {
-    background-color: #060b26;
+    background-color: #013778;
   }
 
   span {

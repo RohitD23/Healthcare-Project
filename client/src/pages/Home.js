@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <MainSection title="Simplifying Surgery Experience in Pune" />
+      <MainSection title="Simplifying Surgery Experience in Latur" />
       <Services />
       <AboutUs />
       <MeetDoctors />

@@ -1,5 +1,7 @@
 const API_URL = "http://localhost:8000/api";
 
+//FEEDBACK REQUEST
+
 async function httpSubmitFeedback(data) {
   const response = await fetch(`${API_URL}/feedback`, {
     method: "post",
@@ -11,6 +13,15 @@ async function httpSubmitFeedback(data) {
 
   return await response.json();
 }
+
+async function httpGetFeedback(page, limit) {
+  const response = await fetch(
+    `${API_URL}/feedback?page=${page}&limit=${limit}`
+  );
+  return await response.json();
+}
+
+//AUTH REQUEST
 
 async function httpLogIn(user) {
   const response = await fetch(`${API_URL}/auth/login`, {
@@ -69,20 +80,21 @@ async function httpLogout() {
   return await response.json();
 }
 
-async function httpGetFeedback(page, limit) {
-  const response = await fetch(
-    `${API_URL}/feedback?page=${page}&limit=${limit}`
-  );
+//USER REQUEST
+
+async function httpGetAccountType() {
+  const response = await fetch(`${API_URL}/user/account-type`);
   return await response.json();
 }
 
 export {
   httpSubmitFeedback,
+  httpGetFeedback,
   httpLogIn,
   httpAddNewUser,
   httpForgotPassword,
   httpResetPassword,
   httpCheckUserLoggedIn,
   httpLogout,
-  httpGetFeedback,
+  httpGetAccountType,
 };

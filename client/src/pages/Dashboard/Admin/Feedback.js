@@ -4,6 +4,8 @@ import * as BiIcons from "react-icons/bi";
 
 import { httpGetFeedback } from "../../../utils/request";
 import Navbar from "../../../components/navbar/Navbar";
+import { httpGetAccountType } from "../../../utils/request";
+import { useNavigate } from "react-router-dom";
 
 export default function Feedback() {
   const [page, setPage] = useState(1);
@@ -11,6 +13,8 @@ export default function Feedback() {
   const [totalPages, setTotalPages] = useState(0);
   const [feedbacks, setFeedbacks] = useState([]);
   const [isLoading, setisLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getFeedbacks() {
@@ -45,9 +49,20 @@ export default function Feedback() {
     }
 
     getFeedbacks();
-  }, [page, limit]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
-  useEffect(() => {}, [feedbacks]);
+  useEffect(() => {
+    async function getAccountType() {
+      const response = await httpGetAccountType();
+
+      if (response.type !== "admin") navigate("/");
+    }
+
+    getAccountType();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

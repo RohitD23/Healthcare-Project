@@ -72,9 +72,19 @@ const resetEmpPassword = async (token, newPassword) => {
     });
 };
 
+const getEmployeeType = async (req) => {
+  return await employeesDB
+    .doc(req.session.user.email)
+    .get()
+    .then(async (doc) => {
+      return doc.get("accountType");
+    });
+};
+
 module.exports = {
   checkEmployeeExists,
   verifyEmployee,
   addEmpPasswordResetToken,
   resetEmpPassword,
+  getEmployeeType,
 };

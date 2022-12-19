@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const feedbackRouter = require("./routes/feedback.route");
 const authRouter = require("./routes/auth.router");
+const userRouter = require("./routes/user.router");
 
 const PORT = process.env.PORT;
 
@@ -48,6 +49,8 @@ app.use("/api/feedback", feedbackRouter);
 
 app.use("/api/auth", authRouter);
 app.use("/api/forgot", authRouter);
+
+app.use("/api/user", userRouter);
 
 app.use("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));

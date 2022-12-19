@@ -2,18 +2,31 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { BiLogOut } from "react-icons/bi";
 
-import { AdminSidebarData } from "../../models/SidebarData";
-import { httpLogout } from "../../utils/request";
+import {
+  AdminSidebarData,
+  DoctorSidebarData,
+  PatientSidebarData,
+} from "../../models/SidebarData";
+
+import {
+  httpCheckUserLoggedIn,
+  httpLogout,
+  httpGetAccountType,
+} from "../../utils/request";
 
 export default function Navbar() {
   const [sidebarData, setSidebarData] = useState([]);
+  const [selectedData, setSelectedData] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSidebarData(() =>
-      AdminSidebarData.map((item, index) => {
+      selectedData.map((item, index) => {
         return (
           <MenuItem key={index}>
             <Link to={item.path}>
@@ -24,6 +37,30 @@ export default function Navbar() {
         );
       })
     );
+  }, [selectedData]);
+
+  useEffect(() => {
+    async function checkUserLoggedIn() {
+      const response = await httpCheckUserLoggedIn();
+      if (!response.ok) navigate("/");
+    }
+
+    checkUserLoggedIn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    async function getAccountType() {
+      const response = await httpGetAccountType();
+
+      if (response.type === "patient") setSelectedData(PatientSidebarData);
+      else {
+        if (response.type === "admin") setSelectedData(AdminSidebarData);
+        else setSelectedData(DoctorSidebarData);
+      }
+    }
+
+    getAccountType();
   }, []);
 
   return (

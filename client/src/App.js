@@ -15,6 +15,7 @@ import Orthopedics from "./pages/Departments/Orthopedics";
 import Infertility from "./pages/Departments/Infertility";
 import Radiology from "./pages/Departments/Radiology";
 import Pathlogy from "./pages/Departments/Pathology";
+import DoctorProfile from "./pages/DoctorProfile";
 
 import Account from "./pages/Dashboard/Account";
 import Feedback from "./pages/Dashboard/Admin/Feedback";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route path="/doctorlist" element={<Doctors />} />
+        <Route path="/profile/:id" element={<DoctorProfile/>}/>
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

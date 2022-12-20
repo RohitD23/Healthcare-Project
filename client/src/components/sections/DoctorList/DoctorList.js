@@ -16,6 +16,7 @@ export default function DoctorList() {
           (serviceSelected === "all" ||
             doctor.field.includes(serviceSelected)) && (
             <DoctorCard
+              id={doctor.id}
               key={doctor.name}
               imgSrc={doctor.img}
               name={doctor.name}

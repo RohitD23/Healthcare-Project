@@ -16,6 +16,7 @@ export default function MeetDoctors() {
     setDoctors(
       Doctors.map((doctor) => (
         <DoctorCard
+          id={doctor.id}
           key={doctor.name}
           imgSrc={doctor.img}
           name={doctor.name}

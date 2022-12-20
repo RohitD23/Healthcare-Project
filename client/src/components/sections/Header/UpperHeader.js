@@ -37,7 +37,7 @@ export default function UpperHeader() {
   return (
     <Container>
       <LogoName href="/">
-        <img src="images/company-logo.png" alt="logo" />
+        <img src="/images/company-logo.png" alt="logo" />
         Mamta Hospital
       </LogoName>
 

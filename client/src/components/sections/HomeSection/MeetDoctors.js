@@ -7,25 +7,30 @@ import { BsArrowRightCircleFill as RArrow } from "react-icons/bs";
 import { Doctors } from "../../../models/DoctorsData";
 import DoctorCard from "../../cards/DoctorCard";
 
-export default function MeetDoctors() {
+export default function MeetDoctors({ serviceSelected }) {
   const [doctors, setDoctors] = useState([]);
   const [pos, setPos] = useState(0);
   const ref = useRef(null);
 
   useEffect(() => {
     setDoctors(
-      Doctors.map((doctor) => (
-        <DoctorCard
-          id={doctor.id}
-          key={doctor.name}
-          imgSrc={doctor.img}
-          name={doctor.name}
-          rating={doctor.rating}
-          field={doctor.field.toString()}
-        />
-      ))
+      Doctors.map((doctor) => {
+        return (
+          (serviceSelected === "all" ||
+            doctor.field.includes(serviceSelected)) && (
+            <DoctorCard
+              id={doctor.id}
+              key={doctor.name}
+              imgSrc={doctor.img}
+              name={doctor.name}
+              rating={doctor.rating}
+              field={doctor.field.join(", ")}
+            />
+          )
+        );
+      })
     );
-  }, []);
+  }, [serviceSelected]);
 
   const slide = (shift) => {
     ref.current.scrollLeft += shift;
@@ -34,7 +39,7 @@ export default function MeetDoctors() {
 
   return (
     <Div>
-      <Heading>Meet Our Specialists</Heading>
+      <Heading>Meet Our Doctors</Heading>
 
       <HorizontalLine />
 

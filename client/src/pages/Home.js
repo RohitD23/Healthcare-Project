@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../components/sections/Header/Header";
-import MainSection from "../components/sections/MainSection";
+import ImageShow from "../components/sections/ImageShow";
 import Footer from "../components/sections/Footer/Footer";
 
 import Services from "../components/sections/HomeSection/Services";
@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <MainSection title="Simplifying Surgery Experience in Latur" />
+      <ImageShow />
       <Services />
       <AboutUs />
-      <MeetDoctors />
+      <MeetDoctors serviceSelected={"all"} />
       <Contact />
       <Footer />
     </div>

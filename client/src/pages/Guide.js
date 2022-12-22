@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../components/sections/Header/Header";
-import MainSection from "../components/sections/MainSection";
+import ImageShow from "./../components/sections/ImageShow";
 import Footer from "../components/sections/Footer/Footer";
 
 import GuideInfo from "../components/sections/GuideSection/GuideInfo";
@@ -13,7 +13,7 @@ export default function Guide() {
   return (
     <>
       <Header />
-      <MainSection title="Simplified guide for our patients" />
+      <ImageShow />
       <GuideInfo />
       <AddFacilities />
       <TPA />

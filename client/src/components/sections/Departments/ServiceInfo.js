@@ -1,30 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ServiceInfo({ title, info, imgSrc }) {
+export default function ServiceInfo({ title, info }) {
   return (
     <Container>
-      <Content>
-        <Heading>{title}</Heading>
-        <p>{info}</p>
-      </Content>
-
-      <Img>
-        <img src={imgSrc} alt="Icon" />
-      </Img>
+      <Heading>{title}</Heading>
+      <p>{info}</p>
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
 
-  margin-top: 5rem;
-  padding-left: 18rem;
+  margin: 10rem 15%;
+  padding: 4rem;
+  background-color: #fafafa;
+
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
 
   p {
-    width: 80%;
     font-size: 1.6rem;
     line-height: 3rem;
     color: #505257;
@@ -36,24 +32,4 @@ const Heading = styled.div`
   font-weight: 800;
   margin-bottom: 2rem;
   color: #505257;
-`;
-
-const Content = styled.div`
-  width: 60%;
-`;
-
-const Img = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-  height: 25rem;
-  width: 25rem;
-  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.2);
-
-  img {
-    width: 15rem;
-    height: 15rem;
-  }
 `;

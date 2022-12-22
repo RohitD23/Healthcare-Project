@@ -47,6 +47,7 @@ export default function Contact() {
 
 const Container = styled.div`
   padding-top: 8rem;
+  margin-bottom: 5rem;
 `;
 
 const Heading = styled.div`

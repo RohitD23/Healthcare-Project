@@ -21,7 +21,6 @@ export default function Footer() {
 
 const Container = styled.div`
   background-color: #3d7cc9;
-  margin-top: 5rem;
   padding-bottom: 8rem;
 
   display: flex;

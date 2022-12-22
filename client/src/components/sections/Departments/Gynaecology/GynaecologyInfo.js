@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Facility from "../Facility";
 
-import { gynaecology } from "../../../../models/ServicesData";
+import { gynaecology } from "../../../../models/service.model/GynaecologyData";
 
 export default function GynaecologyInfo() {
   return (
@@ -45,7 +45,7 @@ export default function GynaecologyInfo() {
 }
 
 const Container = styled.div`
-  margin-top: 10rem;
+  margin: 10rem 0;
 `;
 
 const Heading = styled.div`

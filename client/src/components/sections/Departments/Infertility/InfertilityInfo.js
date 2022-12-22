@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import Facility from "./Facility";
+import Facility from "../Facility";
 
-import { infertility } from "../../../models/ServicesData";
+import { infertility } from "../../../../models/service.model/InfertilityData";
 
 export default function InfertilityInfo() {
   return (
@@ -40,7 +40,7 @@ export default function InfertilityInfo() {
 }
 
 const Container = styled.div`
-  margin-top: 10rem;
+  margin-bottom: 10rem;
 `;
 
 const Heading = styled.div`

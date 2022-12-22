@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 
-import Review from "../components/cards/Review";
-import Header from "../components/sections/Header/Header";
-import { Doctors } from "../models/DoctorsData";
-import { Reviews } from "../models/ReviewsData";
+import Review from "../../components/cards/Review";
+import Header from "../../components/sections/Header/Header";
+import { Doctors } from "../../models/DoctorsData";
+import { Reviews } from "../../models/ReviewsData";
 
 const DoctorProfile = () => {
   const { id } = useParams();

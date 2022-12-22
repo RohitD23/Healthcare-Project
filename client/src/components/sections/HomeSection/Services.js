@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import { servicesData } from "../../../models/ServicesData";
+import { servicesData } from "../../../models/service.model/ServicesData";
 import ServiceCard from "../../cards/ServiceCard";
 
 export default function Services() {

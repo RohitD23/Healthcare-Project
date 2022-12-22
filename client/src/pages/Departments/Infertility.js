@@ -1,25 +1,30 @@
 import React from "react";
 
 import Header from "../../components/sections/Header/Header";
-import MainSection from "../../components/sections/MainSection";
 import Footer from "../../components/sections/Footer/Footer";
 
 import ServiceInfo from "../../components/sections/Departments/ServiceInfo";
-import InfertilityInfo from "../../components/sections/Departments/InfertilityInfo";
+import InfertilityInfo from "../../components/sections/Departments/Infertility/InfertilityInfo";
 
-import { infertilityInfo } from "../../models/ServiceInfo";
+import { infertilityInfo } from "../../models/service.model/ServiceInfo";
+import DepartmentDoctor from "../../components/sections/Departments/DepartmentDoctors";
 
 export default function Infertility() {
   return (
     <div>
       <Header />
-      <MainSection title="Best Infertility Care for Male and Female in Pune" />
+      <img
+        src="images/Infertility.jpg"
+        alt="Department"
+        style={{ width: "100%", height: "40rem" }}
+      />
       <ServiceInfo
-        title={"What is Infertility ?"}
+        title={"Infertility Department"}
         info={infertilityInfo}
         imgSrc={"icons/services-icons/infertility.png"}
       />
       <InfertilityInfo />
+      <DepartmentDoctor serviceSelected={"Infertility Care"} />
       <Footer />
     </div>
   );

@@ -54,7 +54,7 @@ const Button = styled.button`
   cursor: pointer;
 
   background-color: ${(props) => {
-    if (!props.isExpanded) return "#F8F6F0";
+    if (!props.isExpanded) return "#fafafa";
     else return "#3d7cc9";
   }};
 

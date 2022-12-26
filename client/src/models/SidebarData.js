@@ -1,7 +1,6 @@
 import React from "react";
 import * as MdIcons from "react-icons/md";
 import * as IoIcons from "react-icons/io";
-import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 
 export const AdminSidebarData = [
@@ -29,19 +28,19 @@ export const AdminSidebarData = [
 
 export const PatientSidebarData = [
   {
-    title: "Account Settings",
+    title: "Account",
     path: "/dashboard/account",
     icon: <MdIcons.MdOutlineAccountCircle />,
   },
   {
-    title: "Appointments",
-    path: "/dashboard/appointments",
-    icon: <AiIcons.AiFillSchedule />,
+    title: "Current Appointments",
+    path: "/dashboard/current-appointments",
+    icon: <AiIcons.AiFillCalendar />,
   },
   {
-    title: "Prescription",
-    path: "/dashboard/prescription",
-    icon: <FaIcons.FaFilePrescription />,
+    title: "Previous Appointments",
+    path: "/dashboard/previous-appointments",
+    icon: <AiIcons.AiFillSchedule />,
   },
 ];
 

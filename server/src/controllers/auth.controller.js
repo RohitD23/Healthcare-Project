@@ -15,6 +15,7 @@ const {
   verifyUser,
   addUserPasswordResetToken,
   resetUserPassword,
+  changeUserPassword,
 } = require("../model/user.model");
 
 const loginUser = async (req, res) => {
@@ -147,6 +148,21 @@ const resetPassword = async (req, res) => {
   }
 };
 
+const changePassword = async (req, res) => {
+  try {
+    const { password } = req.body;
+
+    await changeUserPassword(req, password);
+
+    return res
+      .status(200)
+      .json({ ok: true, msg: "Password Changed Successfully" });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ ok: false, msg: "Internal Server Error" });
+  }
+};
+
 const checkUserLoggedIn = (req, res) => {
   try {
     if (req.session.authenticated) return res.status(200).json({ ok: true });
@@ -171,6 +187,7 @@ module.exports = {
   addNewUser,
   forgotPassword,
   resetPassword,
+  changePassword,
   checkUserLoggedIn,
   logout,
 };

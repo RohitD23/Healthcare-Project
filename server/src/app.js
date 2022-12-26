@@ -16,17 +16,6 @@ const PORT = process.env.PORT;
 
 const app = express();
 
-app.use(helmet());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      "default-src": ["'self'", "'unsafe-inline'", "*.googleapis.com"],
-      "script-src": ["'self'", "'unsafe-inline'", "*.googleapis.com"],
-      "img-src": ["'self' data:", "*.googleapis.com", "*.gstatic.com"],
-      "script-src-attr": null,
-    },
-  })
-);
 app.use((req, res, next) => {
   res.header("Cross-Origin-Embedder-Policy", "cross-origin");
   next();

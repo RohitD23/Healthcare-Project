@@ -61,7 +61,6 @@ export default function RegisterForm() {
   };
 
   const handleChange = (event) => {
-    console.log(event);
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
@@ -70,7 +69,7 @@ export default function RegisterForm() {
       values;
 
     if (name === "") {
-      toast.error("Last Name Required.", toastOptions);
+      toast.error("Name Required.", toastOptions);
       return false;
     } else if (gender === "") {
       toast.error("Gender Required.", toastOptions);

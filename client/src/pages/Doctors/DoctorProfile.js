@@ -69,11 +69,6 @@ const DoctorProfile = () => {
           </PopUp>
         </DoctorDetails>
       </DocContainer>
-
-      <ReviewsContainer>
-        <ReviewText>Reviews</ReviewText>
-        {ReviewsJSX}
-      </ReviewsContainer>
     </PageContainer>
   );
 };
@@ -169,17 +164,4 @@ const BookAppointmentButton = styled.button`
     scale: 0.95;
     transition: scale 150ms;
   }
-`;
-
-const ReviewsContainer = styled.div`
-  width: 100%;
-  height: fit-content;
-  padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ReviewText = styled.div`
-  font-size: 3rem;
 `;

@@ -1,7 +1,12 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-const { addAppointment, getAppoints } = require("../model/appointment.model");
+const {
+  addAppointment,
+  getDoctorAppoints,
+  getPatAppoints,
+  cancelAppoint,
+} = require("../model/appointment.model");
 
 const sendMail = async (req, data) => {
   let smtpTransport = nodemailer.createTransport({
@@ -45,7 +50,7 @@ const getDocAppoints = async (req, res) => {
   try {
     const doctorName = req.params.doctorName;
 
-    const appoints = await getAppoints(doctorName);
+    const appoints = await getDoctorAppoints(doctorName);
     return res.status(200).json(appoints);
   } catch (error) {
     console.log(error.message);
@@ -53,4 +58,33 @@ const getDocAppoints = async (req, res) => {
   }
 };
 
-module.exports = { submitAppointment, getDocAppoints };
+const getPatientAppoints = async (req, res) => {
+  try {
+    const appoints = await getPatAppoints(req);
+    return res.status(200).json(appoints);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ ok: false, msg: "Internal Server Error" });
+  }
+};
+
+const cancelAppointment = async (req, res) => {
+  try {
+    const appoint = req.body;
+    await cancelAppoint(req, appoint);
+
+    return res
+      .status(200)
+      .json({ ok: true, msg: "Cancelled Appointment Successfully" });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ ok: false, msg: "Internal Server Error" });
+  }
+};
+
+module.exports = {
+  submitAppointment,
+  getDocAppoints,
+  getPatientAppoints,
+  cancelAppointment,
+};

@@ -14,7 +14,7 @@ export default function PopUp(props) {
         <TopContainer>
           <CloseButton onClick={() => props.setTrigger(false)}>
             <AiOutlineClose
-              style={{ width: "2.5rem", height: "2.5rem", color: "#fff" }}
+              style={{ width: "2rem", height: "2rem", color: "#fff" }}
             />
           </CloseButton>
         </TopContainer>
@@ -58,7 +58,7 @@ const TopContainer = styled.div`
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 1.6rem;
+  top: 1rem;
   right: 1.6rem;
 
   border: none;

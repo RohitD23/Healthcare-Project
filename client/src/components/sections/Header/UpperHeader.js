@@ -69,11 +69,9 @@ export default function UpperHeader() {
             <Button
               color={"#3d7cc9"}
               backgroundColor={"#ffff"}
-              onClick={() =>
-                navigate("/login", { state: { type: "employee" } })
-              }
+              onClick={() => navigate("/register")}
             >
-              Employee Login
+              Patient Register
             </Button>
 
             <Button

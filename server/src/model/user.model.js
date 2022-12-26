@@ -87,10 +87,45 @@ const resetUserPassword = async (token, newPassword) => {
     });
 };
 
+const changeUserPassword = async (req, password) => {
+  let saltRounds = 10;
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+  await usersDB.doc(req.session.user.email).update({
+    password: hashedPassword,
+  });
+};
+
+const getUserData = async (req) => {
+  return await usersDB
+    .doc(req.session.user.email)
+    .get()
+    .then((doc) => {
+      return {
+        name: doc.data().name,
+        email: doc.data().email,
+        age: doc.data().age,
+        gender: doc.data().gender,
+        phoneNumber: doc.data().phoneNumber,
+      };
+    });
+};
+
+const modifyUserData = async (req, user) => {
+  await usersDB.doc(req.session.user.email).update({
+    name: user.name,
+    age: user.age,
+    phoneNumber: user.phoneNumber,
+    gender: user.gender,
+  });
+};
+
 module.exports = {
   checkUserExists,
   storeUser,
   verifyUser,
   addUserPasswordResetToken,
   resetUserPassword,
+  changeUserPassword,
+  getUserData,
+  modifyUserData,
 };

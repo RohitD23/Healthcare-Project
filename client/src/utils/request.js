@@ -70,6 +70,18 @@ async function httpResetPassword(data) {
   return await response.json();
 }
 
+async function httpChangePassword(password) {
+  const response = await fetch(`${API_URL}/auth/changePassword`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(password),
+  });
+
+  return await response.json();
+}
+
 async function httpCheckUserLoggedIn() {
   const response = await fetch(`${API_URL}/auth/session`);
   return await response.json();
@@ -84,6 +96,23 @@ async function httpLogout() {
 
 async function httpGetAccountType() {
   const response = await fetch(`${API_URL}/user/account-type`);
+  return await response.json();
+}
+
+async function httpGetUserData() {
+  const response = await fetch(`${API_URL}/user`);
+  return await response.json();
+}
+
+async function httpChangeUserData(user) {
+  const response = await fetch(`${API_URL}/user/changeData`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+
   return await response.json();
 }
 
@@ -118,6 +147,23 @@ async function httpGetDocAppoints(doctorName) {
   return await response.json();
 }
 
+async function httpGetPatientAppoints() {
+  const response = await fetch(`${API_URL}/appointment`);
+  return await response.json();
+}
+
+async function httpCancelAppointment(appoint) {
+  const response = await fetch(`${API_URL}/appointment/cancel`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(appoint),
+  });
+
+  return await response.json();
+}
+
 export {
   httpSubmitFeedback,
   httpGetFeedback,
@@ -125,11 +171,16 @@ export {
   httpAddNewUser,
   httpForgotPassword,
   httpResetPassword,
+  httpChangePassword,
   httpCheckUserLoggedIn,
   httpLogout,
   httpGetAccountType,
+  httpGetUserData,
+  httpChangeUserData,
   httpGetDoctors,
   httpGetDoctorInfo,
   httpSubmitAppointment,
   httpGetDocAppoints,
+  httpGetPatientAppoints,
+  httpCancelAppointment,
 };

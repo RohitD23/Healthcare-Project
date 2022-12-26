@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { BsCheckCircle } from "react-icons/bs";
-import { ToastContainer } from "react-toastify";
 
 import PopUp from "../../../utils/PopUp";
 import AppointmentForm from "../../forms/AppointmentForm";

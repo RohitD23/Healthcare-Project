@@ -68,6 +68,10 @@ export default function Navbar() {
       <IconContext.Provider value={{ color: "#fff" }}>
         <NavMenu>
           <MenuItems>
+            <LogoName href="/">
+              <img src="/images/company-logo.png" alt="logo" />
+              Mamta Hospital
+            </LogoName>
             {sidebarData}
 
             <MenuItem>
@@ -86,7 +90,7 @@ export default function Navbar() {
 const NavMenu = styled.nav`
   background-color: #3d7cc9;
 
-  width: 25rem;
+  width: 30rem;
   height: 100vh;
 
   display: flex;
@@ -94,6 +98,25 @@ const NavMenu = styled.nav`
 
   position: fixed;
   top: 0;
+`;
+
+const LogoName = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: #fff;
+
+  margin: 2rem 1rem;
+
+  img {
+    height: 5rem;
+    width: 5rem;
+    margin-right: 1rem;
+  }
 `;
 
 const MenuItems = styled.ul`

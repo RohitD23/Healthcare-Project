@@ -10,6 +10,7 @@ const feedbackRouter = require("./routes/feedback.route");
 const authRouter = require("./routes/auth.router");
 const userRouter = require("./routes/user.router");
 const employeeRouter = require("./routes/employee.router");
+const appointmentRouter = require("./routes/appointment.router");
 
 const PORT = process.env.PORT;
 
@@ -53,6 +54,8 @@ app.use("/api/forgot", authRouter);
 
 app.use("/api/user", userRouter);
 app.use("/api/employee", employeeRouter);
+
+app.use("/api/appointment", appointmentRouter);
 
 app.use("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));

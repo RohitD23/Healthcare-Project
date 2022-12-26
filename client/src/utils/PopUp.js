@@ -30,6 +30,7 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
@@ -42,7 +43,7 @@ const Container = styled.div`
 const PopUpContainer = styled.div`
   position: relative;
   width: 100%;
-  max-width: 64rem;
+  max-width: 90rem;
   border-radius: 1rem;
   background-color: #fff;
 `;

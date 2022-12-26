@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 
+import PopUp from "../../utils/PopUp";
+import AppointmentForm from "../forms/AppointmentForm";
+
 export default function DoctorCard({ imgSrc, name, rating, field }) {
   const navigate = useNavigate();
+  const [trigger, setTrigger] = useState(false);
 
   let stars = [];
 
@@ -21,8 +25,8 @@ export default function DoctorCard({ imgSrc, name, rating, field }) {
   };
 
   return (
-    <Container onClick={onClickCard}>
-      <ProfilePhoto src={imgSrc}></ProfilePhoto>
+    <Container>
+      <ProfilePhoto src={imgSrc} onClick={onClickCard}></ProfilePhoto>
 
       <Name>Dr. {name}</Name>
       <Field>{field}</Field>
@@ -30,7 +34,12 @@ export default function DoctorCard({ imgSrc, name, rating, field }) {
       <RatingContainer>
         {stars}
         <Rating>{rating + "/5"}</Rating>
-        <BookAppointmentButton>Book Appointment</BookAppointmentButton>
+        <BookAppointmentButton onClick={() => setTrigger(true)}>
+          Book Appointment
+        </BookAppointmentButton>
+        <PopUp trigger={trigger} setTrigger={setTrigger}>
+          <AppointmentForm name={name} />
+        </PopUp>
       </RatingContainer>
     </Container>
   );
@@ -42,7 +51,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
 
   background-color: #e6e6e6;
   border-radius: 1rem;
@@ -52,6 +60,7 @@ const ProfilePhoto = styled.img`
   height: 30rem;
   width: 30rem;
   border-radius: 1rem 1rem 0 0;
+  cursor: pointer;
 `;
 
 const Name = styled.div`

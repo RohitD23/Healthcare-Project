@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 import { httpGetDoctors } from "../../../utils/request";
 import FilterButtons from "./FilterButtons";
@@ -41,6 +42,7 @@ export default function DoctorList() {
       />
 
       <ListContainer>{doctors}</ListContainer>
+      <ToastContainer style={{ fontSize: "1.4rem" }} />
     </div>
   );
 }

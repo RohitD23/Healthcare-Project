@@ -6,12 +6,16 @@ import { AiFillStar } from "react-icons/ai";
 import Review from "../../components/cards/Review";
 import Header from "../../components/sections/Header/Header";
 
+import PopUp from "../../utils/PopUp";
+import AppointmentForm from "../../components/forms/AppointmentForm";
+
 import { httpGetDoctorInfo } from "../../utils/request";
 import { Reviews } from "../../models/ReviewsData";
 
 const DoctorProfile = () => {
   const { name } = useParams();
   const [doctorInfo, setDoctorsInfo] = useState({});
+  const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
     const getDcotorInfo = async () => {
@@ -43,18 +47,29 @@ const DoctorProfile = () => {
   return (
     <PageContainer>
       <Header />
+
       <DocContainer>
         <ProfilePhoto src={doctorInfo.imgSrc}></ProfilePhoto>
+
         <DoctorDetails>
           <DoctorName>{doctorInfo.name}</DoctorName>
+
           <DoctorField>{doctorInfo.field}</DoctorField>
+
           <RatingContainer>
             <StarsContainer>{StarsJSX}</StarsContainer>
             <RatingText>{doctorInfo.rating + " / 5"}</RatingText>
           </RatingContainer>
-          <BookAppointmentButton>Book Appointment</BookAppointmentButton>
+
+          <BookAppointmentButton onClick={() => setTrigger(true)}>
+            Book Appointment
+          </BookAppointmentButton>
+          <PopUp trigger={trigger} setTrigger={setTrigger}>
+            <AppointmentForm name={doctorInfo.name} />
+          </PopUp>
         </DoctorDetails>
       </DocContainer>
+
       <ReviewsContainer>
         <ReviewText>Reviews</ReviewText>
         {ReviewsJSX}

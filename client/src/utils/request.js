@@ -87,6 +87,8 @@ async function httpGetAccountType() {
   return await response.json();
 }
 
+//EMPLOYEE REQUEST
+
 async function httpGetDoctors() {
   const response = await fetch(`${API_URL}/employee`);
   return await response.json();
@@ -94,6 +96,25 @@ async function httpGetDoctors() {
 
 async function httpGetDoctorInfo(name) {
   const response = await fetch(`${API_URL}/employee/${name}`);
+  return await response.json();
+}
+
+//APPOINTMENT REQUEST
+
+async function httpSubmitAppointment(data) {
+  const response = await fetch(`${API_URL}/appointment/submit`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return await response.json();
+}
+
+async function httpGetDocAppoints(doctorName) {
+  const response = await fetch(`${API_URL}/appointment/${doctorName}`);
   return await response.json();
 }
 
@@ -109,4 +130,6 @@ export {
   httpGetAccountType,
   httpGetDoctors,
   httpGetDoctorInfo,
+  httpSubmitAppointment,
+  httpGetDocAppoints,
 };

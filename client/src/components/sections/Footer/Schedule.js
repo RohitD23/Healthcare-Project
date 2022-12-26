@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { BsCheckCircle } from "react-icons/bs";
 
 import PopUp from "../../../utils/PopUp";
-import ChooseService from "../../forms/ChooseService";
+import AppointmentForm from "../../forms/AppointmentForm";
 
 export default function Schedule({ Heading }) {
   const [trigger, setTrigger] = useState(false);
@@ -55,7 +55,7 @@ export default function Schedule({ Heading }) {
           <BsCheckCircle style={{ marginLeft: "0.38rem" }} />
         </Button>
         <PopUp trigger={trigger} setTrigger={setTrigger}>
-          <ChooseService />
+          <AppointmentForm />
         </PopUp>
       </SchContainer>
     </Container>

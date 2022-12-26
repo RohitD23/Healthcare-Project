@@ -26,6 +26,7 @@ export default function ForgotPassword() {
 
   const [type, setType] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -33,7 +34,13 @@ export default function ForgotPassword() {
 
     if (handleValidation()) {
       setIsLoading(true);
-      const response = await httpForgotPassword({ email, type });
+
+      let response;
+
+      if (type === "patient")
+        response = await httpForgotPassword({ email, type });
+      else response = await httpForgotPassword({ username, type });
+
       setIsLoading(false);
 
       if (response.ok === false) toast.error(response.msg, toastOptions);
@@ -41,13 +48,14 @@ export default function ForgotPassword() {
     }
   };
 
-  const handleChange = (event) => {
-    setEmail(event.target.value);
-  };
-
   const handleValidation = () => {
-    if (email === "") {
+    if (type === "patient" && email === "") {
       toast.error("Email required.", toastOptions);
+      return false;
+    }
+
+    if (type === "employee" && username === "") {
+      toast.error("Username required.", toastOptions);
       return false;
     }
 
@@ -64,14 +72,27 @@ export default function ForgotPassword() {
 
         <div>
           <span>Please enter your email address to reset the password</span>
-          <Input
-            width={35}
-            type="email"
-            label="E-mail"
-            name="email"
-            value={email}
-            handleChange={handleChange}
-          />
+          {type === "patient" && (
+            <Input
+              width={35}
+              type="email"
+              label="E-mail"
+              name="email"
+              value={email}
+              handleChange={(event) => setEmail(event.target.value)}
+            />
+          )}
+
+          {type === "employee" && (
+            <Input
+              width={35}
+              type="username"
+              label="Username"
+              name="username"
+              value={username}
+              handleChange={(event) => setUsername(event.target.value)}
+            />
+          )}
         </div>
 
         <Button type="submit" disabled={isLoading}>

@@ -10,7 +10,7 @@ import {
 } from "styled-dropdown-component";
 
 import PopUp from "../../../utils/PopUp";
-import ChooseService from "../../forms/ChooseService";
+import AppointmentForm from "../../forms/AppointmentForm";
 import { httpCheckUserLoggedIn, httpLogout } from "../../../utils/request";
 
 export default function UpperHeader() {
@@ -93,7 +93,7 @@ export default function UpperHeader() {
           Book Free Appointment
         </Button>
         <PopUp trigger={trigger} setTrigger={setTrigger}>
-          <ChooseService />
+          <AppointmentForm />
         </PopUp>
       </BtnContainer>
     </Container>

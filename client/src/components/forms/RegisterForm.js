@@ -20,8 +20,9 @@ export default function RegisterForm() {
   };
 
   const [values, setValues] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
+    gender: "male",
+    age: "",
     email: "",
     phoneNumber: "",
     password: "",
@@ -35,14 +36,15 @@ export default function RegisterForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(values);
     if (handleValidation()) {
       setIsLoading(true);
 
-      const { firstName, lastName, email, phoneNumber, password } = values;
+      const { name, gender, age, email, phoneNumber, password } = values;
       const response = await httpAddNewUser({
-        firstName,
-        lastName,
+        name,
+        gender,
+        age,
         email,
         phoneNumber,
         password,
@@ -59,24 +61,22 @@ export default function RegisterForm() {
   };
 
   const handleChange = (event) => {
+    console.log(event);
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
   const handleValidation = () => {
-    const {
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      password,
-      confirmPassword,
-    } = values;
+    const { name, gender, age, email, phoneNumber, password, confirmPassword } =
+      values;
 
-    if (firstName === "") {
-      toast.error("First Name Required.", toastOptions);
-      return false;
-    } else if (lastName === "") {
+    if (name === "") {
       toast.error("Last Name Required.", toastOptions);
+      return false;
+    } else if (gender === "") {
+      toast.error("Gender Required.", toastOptions);
+      return false;
+    } else if (age === "") {
+      toast.error("Age Required.", toastOptions);
       return false;
     } else if (email === "") {
       toast.error("Email Required.", toastOptions);
@@ -136,18 +136,23 @@ export default function RegisterForm() {
         <Input
           width={35}
           type="text"
-          label="First Name"
-          name="firstName"
-          value={values.firstName}
+          label="Name"
+          name="name"
+          value={values.name}
           handleChange={handleChange}
         />
 
+        <Select name="gender" onChange={handleChange}>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </Select>
+
         <Input
           width={35}
-          type="text"
-          label="Last Name"
-          name="lastName"
-          value={values.lastName}
+          type="number"
+          label="Age"
+          name="age"
+          value={values.age}
           handleChange={handleChange}
         />
 
@@ -280,4 +285,13 @@ const Loader = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+const Select = styled.select`
+  background-color: #ffff;
+  border: 0.1rem solid #6f81a5;
+  border-radius: 0.4rem;
+
+  margin: 0 0.5rem;
+  padding: 1.5rem 2rem;
 `;

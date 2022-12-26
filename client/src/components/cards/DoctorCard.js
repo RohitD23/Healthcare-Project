@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 
-export default function DoctorCard({ id, imgSrc, name, rating, field }) {
-
+export default function DoctorCard({ imgSrc, name, rating, field }) {
   const navigate = useNavigate();
 
   let stars = [];
@@ -14,16 +13,18 @@ export default function DoctorCard({ id, imgSrc, name, rating, field }) {
       <AiFillStar key={i} style={{ color: "#ff8300", scale: "2.5" }} />
     );
   }
-  
+
   const onClickCard = () => {
-    navigate(`/profile/${id}`);
-  }
+    const linkName = name.replace(/\s/g, "");
+    console.log(linkName);
+    navigate(`/profile/${linkName}`);
+  };
 
   return (
     <Container onClick={onClickCard}>
       <ProfilePhoto src={imgSrc}></ProfilePhoto>
 
-      <Name>{name}</Name>
+      <Name>Dr. {name}</Name>
       <Field>{field}</Field>
 
       <RatingContainer>
@@ -41,7 +42,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
 
   background-color: #e6e6e6;

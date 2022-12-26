@@ -26,10 +26,9 @@ export default function LoginForm() {
   }, [state, navigate]);
 
   const [type, setType] = useState("");
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,8 +37,11 @@ export default function LoginForm() {
     if (handleValidation()) {
       setIsLoading(true);
 
-      const { email, password } = values;
-      const response = await httpLogIn({ email, password, type });
+      let response;
+      if (type === "patient")
+        response = await httpLogIn({ email, password, type });
+      else response = await httpLogIn({ username, password, type });
+
       setIsLoading(false);
 
       if (response.ok === false) {
@@ -50,17 +52,18 @@ export default function LoginForm() {
     }
   };
 
-  const handleChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value });
-  };
-
   const handleValidation = () => {
-    const { email, password } = values;
-
-    if (email === "") {
+    if (type === "patient" && email === "") {
       toast.error("Email required.", toastOptions);
       return false;
-    } else if (password === "") {
+    }
+
+    if (type === "employee" && username === "") {
+      toast.error("Username required.", toastOptions);
+      return false;
+    }
+
+    if (password === "") {
       toast.error("Password required.", toastOptions);
       return false;
     }
@@ -75,14 +78,27 @@ export default function LoginForm() {
           <h1>Mamta Hospital</h1>
         </Brand>
 
-        <Input
-          width={30}
-          type="email"
-          label="E-mail"
-          name="email"
-          value={values.email}
-          handleChange={handleChange}
-        />
+        {type === "employee" && (
+          <Input
+            width={30}
+            type="username"
+            label="Username"
+            name="username"
+            value={username}
+            handleChange={(event) => setUsername(event.target.value)}
+          />
+        )}
+
+        {type === "patient" && (
+          <Input
+            width={30}
+            type="email"
+            label="E-mail"
+            name="email"
+            value={email}
+            handleChange={(event) => setEmail(event.target.value)}
+          />
+        )}
 
         <div>
           <Input
@@ -90,12 +106,12 @@ export default function LoginForm() {
             type="password"
             label="Password"
             name="password"
-            value={values.password}
-            handleChange={handleChange}
+            value={password}
+            handleChange={(event) => setPassword(event.target.value)}
           />
           <a
             onClick={() =>
-              navigate("/forgotPassword", { state: { type: values.type } })
+              navigate("/forgotPassword", { state: { type: type } })
             }
           >
             forgot password?

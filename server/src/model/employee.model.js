@@ -6,7 +6,7 @@ const employeesDB = db.collection("Employees");
 
 const checkEmployeeExists = async (employee) => {
   return await employeesDB
-    .doc(employee.email)
+    .doc(employee.username)
     .get()
     .then((doc) => {
       if (doc.exists) {
@@ -20,7 +20,7 @@ const checkEmployeeExists = async (employee) => {
 
 const verifyEmployee = async (employee) => {
   return await employeesDB
-    .doc(employee.email)
+    .doc(employee.username)
     .get()
     .then(async (doc) => {
       if (doc.exists) {
@@ -37,10 +37,12 @@ const verifyEmployee = async (employee) => {
 };
 
 const addEmpPasswordResetToken = async (employee, token) => {
-  await employeesDB.doc(employee.email).update({
+  await employeesDB.doc(employee.username).update({
     resetPasswordToken: token,
     resetPasswordExpires: Date.now() + 3600000,
   });
+
+  return await (await employeesDB.doc(employee.username).get()).get("email");
 };
 
 const resetEmpPassword = async (token, newPassword) => {
@@ -74,10 +76,43 @@ const resetEmpPassword = async (token, newPassword) => {
 
 const getEmployeeType = async (req) => {
   return await employeesDB
-    .doc(req.session.user.email)
+    .doc(req.session.user.username)
     .get()
     .then(async (doc) => {
       return doc.get("accountType");
+    });
+};
+
+const getDoctorsData = async () => {
+  return await employeesDB
+    .where("accountType", "==", "doctor")
+    .get()
+    .then((docs) => {
+      let data = [];
+      docs.forEach((doc) => {
+        data.push({
+          name: doc.data().name,
+          field: doc.data().field,
+          imgSrc: doc.data().img,
+          rating: Math.round(doc.data().totalStars / doc.data().totalReviews),
+        });
+      });
+
+      return data;
+    });
+};
+
+const getDoctor = async (name) => {
+  return await employeesDB
+    .doc(name)
+    .get()
+    .then((doc) => {
+      return {
+        name: doc.data().name,
+        field: doc.data().field,
+        imgSrc: doc.data().img,
+        rating: Math.round(doc.data().totalStars / doc.data().totalReviews),
+      };
     });
 };
 
@@ -87,4 +122,6 @@ module.exports = {
   addEmpPasswordResetToken,
   resetEmpPassword,
   getEmployeeType,
+  getDoctorsData,
+  getDoctor,
 };

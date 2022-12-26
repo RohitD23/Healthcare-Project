@@ -37,14 +37,15 @@ const verifyUser = async (user) => {
 };
 
 const storeUser = async (user) => {
-  let { firstName, lastName, email, phoneNumber, password } = user;
+  let { name, gender, age, email, phoneNumber, password } = user;
 
   let saltRounds = 10;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
   await usersDB.doc(email).set({
-    firstName,
-    lastName,
+    name,
+    gender,
+    age,
     email,
     phoneNumber,
     password: hashedPassword,

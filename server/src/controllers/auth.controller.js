@@ -30,7 +30,10 @@ const loginUser = async (req, res) => {
 
     if (status) {
       req.session.authenticated = true;
-      req.session.user = { email: data.email, type: data.type };
+
+      if (data.type == "employee")
+        req.session.user = { username: data.username, type: data.type };
+      else req.session.user = { email: data.email, type: data.type };
 
       return res.status(200).json({ session: req.session, ok: true });
     } else {
@@ -67,7 +70,7 @@ const forgotPassword = async (req, res) => {
   try {
     let token = crypto.randomBytes(20).toString("hex");
 
-    const data = req.body;
+    let data = req.body;
     let status;
 
     if (data.type === "patient") status = await checkUserExists(data);
@@ -75,13 +78,14 @@ const forgotPassword = async (req, res) => {
 
     if (status) {
       if (data.type === "patient") await addUserPasswordResetToken(data, token);
-      else await addEmpPasswordResetToken(data, token);
+      else
+        data = { ...data, email: await addEmpPasswordResetToken(data, token) };
 
       await sendMail(data, token, req);
     } else {
       return res.status(400).json({
         ok: false,
-        msg: "Account with this Email Address doesn't exists",
+        msg: `Account doesn't exists`,
       });
     }
 
@@ -115,7 +119,7 @@ const sendMail = async (data, token, req) => {
 
   smtpTransport.sendMail(mailOptions, (err, info) => {
     if (err) {
-      next(err);
+      console.log(err);
     }
   });
 };

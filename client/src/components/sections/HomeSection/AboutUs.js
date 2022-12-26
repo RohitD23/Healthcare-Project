@@ -62,8 +62,8 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-  height: 70rem;
-  width: 40rem;
+  height: 72rem;
+  width: 45rem;
 `;
 
 const Info = styled.div`

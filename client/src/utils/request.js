@@ -87,6 +87,16 @@ async function httpGetAccountType() {
   return await response.json();
 }
 
+async function httpGetDoctors() {
+  const response = await fetch(`${API_URL}/employee`);
+  return await response.json();
+}
+
+async function httpGetDoctorInfo(name) {
+  const response = await fetch(`${API_URL}/employee/${name}`);
+  return await response.json();
+}
+
 export {
   httpSubmitFeedback,
   httpGetFeedback,
@@ -97,4 +107,6 @@ export {
   httpCheckUserLoggedIn,
   httpLogout,
   httpGetAccountType,
+  httpGetDoctors,
+  httpGetDoctorInfo,
 };

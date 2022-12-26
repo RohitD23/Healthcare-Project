@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import { Doctors } from "../../../models/DoctorsData";
+import { httpGetDoctors } from "../../../utils/request";
 import DoctorCard from "../../cards/DoctorCard";
 
 export default function DepartmentDoctor({ serviceSelected }) {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    setDoctors(
-      Doctors.map((doctor) => {
-        return (
-          doctor.field.includes(serviceSelected) && (
-            <DoctorCard
-              id={doctor.id}
-              key={doctor.name}
-              imgSrc={doctor.img}
-              name={doctor.name}
-              rating={doctor.rating}
-              field={doctor.field.join(", ")}
-            />
-          )
-        );
-      })
-    );
+    const getDoctors = async () => {
+      const data = await httpGetDoctors();
+      setDoctors(
+        data.map((doctor) => {
+          return (
+            doctor.field.includes(serviceSelected) && (
+              <DoctorCard
+                key={doctor.name}
+                imgSrc={doctor.imgSrc}
+                name={doctor.name}
+                rating={doctor.rating}
+                field={doctor.field.join(", ")}
+              />
+            )
+          );
+        })
+      );
+    };
+
+    getDoctors();
   }, [serviceSelected]);
 
   return (

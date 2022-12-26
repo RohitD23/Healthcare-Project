@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 
 import Review from "../../components/cards/Review";
 import Header from "../../components/sections/Header/Header";
-import { Doctors } from "../../models/DoctorsData";
+
+import { httpGetDoctorInfo } from "../../utils/request";
 import { Reviews } from "../../models/ReviewsData";
 
 const DoctorProfile = () => {
-  const { id } = useParams();
-  const doctorInfo = Doctors[id];
+  const { name } = useParams();
+  const [doctorInfo, setDoctorsInfo] = useState({});
+
+  useEffect(() => {
+    const getDcotorInfo = async () => {
+      const data = await httpGetDoctorInfo(name);
+      setDoctorsInfo(data);
+      console.log(data);
+    };
+
+    getDcotorInfo();
+  }, [name]);
 
   const StarsJSX = [];
   for (let i = 0; i < doctorInfo.rating; i++) {
@@ -23,7 +34,7 @@ const DoctorProfile = () => {
   }
 
   // eslint-disable-next-line eqeqeq
-  const reviewsData = Reviews.filter((review) => review.id == id);
+  const reviewsData = Reviews.filter((review) => review.name == name);
   const ReviewsJSX = [];
   for (let i = 0; i < reviewsData.length; i++) {
     ReviewsJSX.push(<Review reviewData={reviewsData[i]}></Review>);
@@ -33,7 +44,7 @@ const DoctorProfile = () => {
     <PageContainer>
       <Header />
       <DocContainer>
-        <ProfilePhoto src={doctorInfo.img}></ProfilePhoto>
+        <ProfilePhoto src={doctorInfo.imgSrc}></ProfilePhoto>
         <DoctorDetails>
           <DoctorName>{doctorInfo.name}</DoctorName>
           <DoctorField>{doctorInfo.field}</DoctorField>

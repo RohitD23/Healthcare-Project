@@ -4,33 +4,35 @@ import styled from "styled-components";
 import { BsArrowLeftCircleFill as LArrow } from "react-icons/bs";
 import { BsArrowRightCircleFill as RArrow } from "react-icons/bs";
 
-import { Doctors } from "../../../models/DoctorsData";
+import { httpGetDoctors } from "../../../utils/request";
 import DoctorCard from "../../cards/DoctorCard";
 
-export default function MeetDoctors({ serviceSelected }) {
+export default function MeetDoctors() {
   const [doctors, setDoctors] = useState([]);
   const [pos, setPos] = useState(0);
   const ref = useRef(null);
 
   useEffect(() => {
-    setDoctors(
-      Doctors.map((doctor) => {
-        return (
-          (serviceSelected === "all" ||
-            doctor.field.includes(serviceSelected)) && (
+    const getDoctors = async () => {
+      const data = await httpGetDoctors();
+
+      setDoctors(
+        data.map((doctor) => {
+          return (
             <DoctorCard
-              id={doctor.id}
               key={doctor.name}
-              imgSrc={doctor.img}
+              imgSrc={doctor.imgSrc}
               name={doctor.name}
               rating={doctor.rating}
               field={doctor.field.join(", ")}
             />
-          )
-        );
-      })
-    );
-  }, [serviceSelected]);
+          );
+        })
+      );
+    };
+
+    getDoctors();
+  }, []);
 
   const slide = (shift) => {
     ref.current.scrollLeft += shift;
